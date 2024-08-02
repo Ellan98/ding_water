@@ -1,0 +1,1 @@
+<view class="text-container data-v-7c0a3a60"><view class="animated-text data-v-7c0a3a60">{{a}} <label wx:if="{{b}}" class="cursor data-v-7c0a3a60">|</label></view></view>

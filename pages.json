@@ -1,0 +1,104 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+
+		{
+			"path": "pages/login/index",
+			"style": {
+				"disableScroll": true,
+				"navigationBarBackgroundColor": "#2db7f5",
+				"backgroundColor": "#2db7f5"
+			}
+		},
+		{
+			"path": "pages/home/index",
+			"style": {}
+		},
+
+		{
+			"path": "pages/profile/index",
+			"style": {}
+		},
+		{
+			"path": "pages/task/index",  
+			"style": {}
+		}
+
+	],
+
+	"subPackages": [{
+			"root": "pagesPackage/loginPage",
+			"pages": [{
+				"path": "account/account",
+				"style": {
+					"navigationBarTextStyle": "white",
+					"disableScroll": true,
+					"navigationBarBackgroundColor": "#2db7f5"
+				}
+			}]
+		},
+		{
+			"root": "pagesPackage/homePage",
+			"pages": [{
+				"path": "newTask/newTask",
+				"style": {
+					"navigationBarTitleText": ""
+				}
+			}]
+		},
+		{
+			"root": "pagesPackage/profilePage",
+			"pages": [{
+				"path": "editProfile/editProfile",
+				"style": {
+					"navigationBarTitleText": "用户"
+				}
+			}]
+
+		},
+		{
+			"root": "pagesPackage/taskPage",
+			"pages": [{
+					"path": "chatRoom/chatRoom",
+					"style": {
+						"disableScroll": true,
+						"navigationBarTitleText": "robot"
+					}
+				}
+
+			]
+
+		}
+	],
+	"preloadRule": {},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#f4f7fc",
+		"backgroundColor": "#f7f7f9"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#f4f7fc",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/icon/home.png",
+				"selectedIconPath": "static/icon/home-active.png"
+			},
+			{
+				"pagePath": "pages/task/index",
+				"iconPath": "static/icon/task.png",
+				"selectedIconPath": "static/icon/task-actived.png"
+			},
+			{
+				"pagePath": "pages/profile/index",
+				"iconPath": "static/icon/profile.png",
+				"selectedIconPath": "static/icon/profile-actived.png"
+			}
+
+
+		]
+	}
+}

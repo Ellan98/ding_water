@@ -1,0 +1,12 @@
+{
+  "disableScroll": true,
+  "navigationBarBackgroundColor": "#2db7f5",
+  "backgroundColor": "#2db7f5",
+  "usingComponents": {
+    "label-title": "./components/label-title/label-title",
+    "uni-list-item": "../../uni_modules/uni-list/components/uni-list-item/uni-list-item",
+    "uni-list": "../../uni_modules/uni-list/components/uni-list/uni-list",
+    "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section",
+    "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
+  }
+}
