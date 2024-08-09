@@ -18,7 +18,7 @@ const handleRequest = (options, resolve, reject) => {
 	
 	  url:`/api-dev${options.url}`,
     method: options.method,
-    data: options.data,
+    data: options.data ,
     success: (response) => {
       if (response.statusCode == 401) {
         uni.showToast({

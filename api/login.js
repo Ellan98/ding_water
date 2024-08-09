@@ -3,7 +3,6 @@ import request from "/utils/request"
 
 export function login (data) {
 return 	request({
-		port:3000,
 		url:"/api/v2/auth/login",
 		method:'post',
 		data

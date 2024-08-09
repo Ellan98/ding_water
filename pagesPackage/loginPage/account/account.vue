@@ -54,8 +54,8 @@
 	const authStore = useAuthStore()
 	// 登录表单
 	const loginForm = reactive({
-		account: 'ellan',
-		password: 'admin'
+		account: 'Ellan',
+		password: 'Ellan'
 	})
 
 	// 校验规则
@@ -90,13 +90,13 @@ let form = ref(null)
 	const submit = () => {
 		
 			form.value.validate().then( async(res) => {
-				res.code='000'
+
 			const data =  await	login(res)
-			// if(data.data) {
-			// 	uni.switchTab({
-			// 		url:"/pages/home/index"
-			// 	})
-			// }
+			if(data.data) {
+				uni.switchTab({
+					url:"/pages/home/index"
+				})
+			}
 			console.log("data",data)
 			}).catch(err => {
 				console.log('err', err);
