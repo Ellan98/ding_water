@@ -1,0 +1,25 @@
+
+.calendar-button.data-v-4978fed5 {
+		flex: 1;
+		font-weight: bold;
+		font-size: 32rpx;
+}
+.tooltip.data-v-4978fed5 {
+		border-radius: 50%;
+		bottom: 200rpx;
+		height: 100rpx;
+		position: fixed;
+		right: 30rpx;
+		width: 100rpx;
+}
+.tooltip image.data-v-4978fed5 {
+		height: 100rpx;
+		width: 100rpx;
+}
+.container.data-v-4978fed5 {
+		padding:0 20rpx;
+}
+.calendar-content.data-v-4978fed5 {
+		border-bottom:4rpx solid #f4f7fc;
+		margin-bottom:20rpx;
+}

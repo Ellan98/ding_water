@@ -1,0 +1,74 @@
+
+.header.data-v-e5f35076 {
+		height: 100%;
+		position: relative;
+}
+	/* 选项卡 style */
+.check-auth-setting.data-v-e5f35076 {
+		background-color: #e0e0e0;
+		left:50%;
+		position: absolute;
+		top:20rpx;
+		transform: translate(-50%);
+		width:90%;
+		z-indx:5;
+}
+.banner.data-v-e5f35076 {
+		background-color: #98942f;
+		height: 300rpx;
+		z-index: 4;
+}
+.avatar-container.data-v-e5f35076 {
+		height: 240rpx;
+		left: 50%;
+		position: absolute;
+		top: 140rpx;
+		transform: translateX(-50%);
+		width: 90%;
+		z-index: 1;
+}
+.avatar-container image.data-v-e5f35076 {
+		border-radius: 50%;
+		border: 10rpx solid white;
+		height: 180rpx;
+		margin-top: 25rpx;
+		width: 180rpx;
+		z-index: 3;
+}
+
+	/* name user style */
+.decript.data-v-e5f35076 {
+		margin-bottom: 40rpx;
+}
+.decript text.data-v-e5f35076:nth-child(1) {
+		font-weight: 700;
+		font-size: 48rpx;
+}
+.decript>text.data-v-e5f35076:nth-child(3) {
+		color: gray;
+}
+.container.data-v-e5f35076 {
+		height: 100%;
+		margin: 80rpx auto 0;
+		/* background-color: #f7f7f9; */
+		width: 90%;
+}
+.zone.data-v-e5f35076 {
+		height: 100%;
+		width: 90%;
+		margin: 0 auto;
+		margin-bottom: 40rpx;
+}
+
+	/* form style */
+.uni-forms.data-v-e5f35076 .uni-easyinput {
+		border: 1px solid #e0e0e0;
+}
+.uni-forms.data-v-e5f35076 .uni-forms-item::after {
+		content: "";
+		margin-top: 10rpx;
+}
+.zone button.data-v-e5f35076 {
+		background-color: #007dff;
+		color: white;
+}

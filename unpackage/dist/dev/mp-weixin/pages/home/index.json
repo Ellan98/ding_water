@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section",
+    "uni-calendar": "../../uni_modules/uni-calendar/components/uni-calendar/uni-calendar",
+    "uni-group": "../../uni_modules/uni-group/components/uni-group/uni-group"
+  }
+}

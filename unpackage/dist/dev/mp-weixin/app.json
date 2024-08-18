@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/home/index",
+    "pages/profile/index",
+    "pages/task/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pagesPackage/loginPage",
+      "pages": [
+        "account/account"
+      ]
+    },
+    {
+      "root": "pagesPackage/homePage",
+      "pages": [
+        "newTask/newTask"
+      ]
+    },
+    {
+      "root": "pagesPackage/profilePage",
+      "pages": [
+        "editProfile/editProfile"
+      ]
+    },
+    {
+      "root": "pagesPackage/taskPage",
+      "pages": [
+        "chatRoom/chatRoom"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#f4f7fc",
+    "backgroundColor": "#f7f7f9"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#f4f7fc",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/icon/home.png",
+        "selectedIconPath": "static/icon/home-active.png"
+      },
+      {
+        "pagePath": "pages/task/index",
+        "iconPath": "static/icon/task.png",
+        "selectedIconPath": "static/icon/task-actived.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "iconPath": "static/icon/profile.png",
+        "selectedIconPath": "static/icon/profile-actived.png"
+      }
+    ]
+  },
+  "preloadRule": {},
+  "usingComponents": {}
+}

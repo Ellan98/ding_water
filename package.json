@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "pinia": "^2.1.7",
+    "vite-plugin-html": "^3.2.2"
+  }
+}
