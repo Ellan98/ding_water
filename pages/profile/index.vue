@@ -48,6 +48,7 @@
 				</uni-list-item>
 			</uni-list>
 		</view>
+<<<<<<< HEAD
 		
 		<view class="zone">
 			<uni-list :border="true" :clickable="true">
@@ -57,6 +58,9 @@
 			</uni-list>
 		</view>
 		
+=======
+
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 		<view class="zone">
 			<uni-list :border="true" :clickable="true">
 				<uni-list-item title="登出" :show-extra-icon="true"
@@ -64,9 +68,12 @@
 				</uni-list-item>
 			</uni-list>
 		</view>
+<<<<<<< HEAD
 		
 
 		
+=======
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 
 	</view>
 

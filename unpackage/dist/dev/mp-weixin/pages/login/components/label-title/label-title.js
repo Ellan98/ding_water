@@ -20,14 +20,23 @@ const _sfc_main = {
     await this.getFullText();
     this.startTyping();
   },
+<<<<<<< HEAD
   beforeDestroy() {
+=======
+  mounted() {
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
     clearInterval(this.intervalTextAnimation);
   },
   methods: {
     async getFullText() {
       try {
+<<<<<<< HEAD
         const responseData = (await api_login.everyday()).data;
         this.fullText = responseData ? `${responseData.hitokoto} ${responseData.from_who ?? ""} -《${responseData.from ?? ""}》` : " 落叶别树，飘零随风。客无所托，悲与此同。";
+=======
+        const responseData = await api_login.everyday().data;
+        this.fullText = responseData ? `${responseData.hitokoto} ${responseData.from_who ?? ""} -《${responseData.from ?? ""}》` : "出现未知错误。";
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
       } catch (error) {
         console.error("Error fetching new text:", error);
         this.fullText = " 落叶别树，飘零随风。客无所托，悲与此同。";

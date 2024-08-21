@@ -90,6 +90,7 @@ let form = ref(null)
 	const submit = () => {
 		
 			form.value.validate().then( async(res) => {
+<<<<<<< HEAD
 				res.code='000'
 			const data =  await	login(res)
 			// if(data.data) {
@@ -97,6 +98,15 @@ let form = ref(null)
 			// 		url:"/pages/home/index"
 			// 	})
 			// }
+=======
+
+			const data =  await	login(res)
+			if(data.data) {
+				uni.switchTab({
+					url:"/pages/home/index"
+				})
+			}
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 			console.log("data",data)
 			}).catch(err => {
 				console.log('err', err);

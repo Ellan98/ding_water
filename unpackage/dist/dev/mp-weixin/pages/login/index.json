@@ -3,6 +3,10 @@
   "navigationBarBackgroundColor": "#2db7f5",
   "backgroundColor": "#2db7f5",
   "usingComponents": {
+<<<<<<< HEAD
+=======
+    "label-title": "./components/label-title/label-title",
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
     "uni-list-item": "../../uni_modules/uni-list/components/uni-list-item/uni-list-item",
     "uni-list": "../../uni_modules/uni-list/components/uni-list/uni-list",
     "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section",

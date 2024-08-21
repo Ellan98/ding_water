@@ -1,5 +1,6 @@
 
 .text-container.data-v-7c0a3a60 {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -23,5 +24,33 @@ from, to {
 }
 50% {
     visibility: hidden;
+=======
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		font-size: 28rpx;
+		font-family: monospace;
+		white-space: pre-wrap;
+		/* 允许换行 */
+		overflow: hidden;
+		position: relative;
+}
+.animated-text.data-v-7c0a3a60 {
+		margin: 0;
+		/* 清除段落默认的外边距 */
+}
+.cursor.data-v-7c0a3a60 {
+		font-weight: bold;
+		animation: blink-7c0a3a60 1s step-end infinite;
+		align-self: flex-end;
+}
+@keyframes blink-7c0a3a60 {
+from,
+		to {
+			visibility: visible;
+}
+50% {
+			visibility: hidden;
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 }
 }

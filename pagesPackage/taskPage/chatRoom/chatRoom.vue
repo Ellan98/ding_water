@@ -11,6 +11,7 @@
 
 
 	</view>
+<<<<<<< HEAD
 	<view class="keyBoardZone">
 		<view class="zone">
 			<uni-icons type="plusempty" :size="30"></uni-icons>
@@ -23,6 +24,15 @@
 			<button type="primary">发送</button>
 		</view>
 
+=======
+	<view class="zone">
+
+		<uni-icons type="bars" size="30"></uni-icons>
+		<view class="textarea-container">
+			<textarea @blur="bindTextAreaBlur" maxlength="120" @linechange="linechange" :auto-height="true"
+				:show-confirm-bar="false" :adjust-position="false" />
+		</view>
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 
 
 
@@ -94,6 +104,7 @@
 		width: 95%;
 	}
 
+<<<<<<< HEAD
 	/* ================== begin input style ==================*/
 
 	.keyBoardZone {
@@ -142,4 +153,28 @@
 
 	/* ================== end input style ==================*/
 
+=======
+	.zone {
+		align-items: center;
+		border: 1px solid black;
+		display: flex;
+		height: 150rpx;
+		justify-content: space-around;
+		width: 99%;
+	}
+
+
+	.scroll-view-item {
+		height: 300rpx;
+		line-height: 300rpx;
+		text-align: center;
+		font-size: 36rpx;
+	}
+
+/* 	.textarea-container:deep(".tex") {
+		border: 2rpx solid #e0e0e0;
+		height: 60rpx;
+		max-height: 120rpx;
+	} */
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 </style>

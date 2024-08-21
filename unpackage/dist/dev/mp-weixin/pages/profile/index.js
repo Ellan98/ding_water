@@ -91,6 +91,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       clickable: true
     }),
     j: common_vendor.p({
+<<<<<<< HEAD
       title: "放松一下",
       ["show-extra-icon"]: true,
       ["extra-icon"]: {
@@ -105,6 +106,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       clickable: true
     }),
     l: common_vendor.p({
+=======
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
       title: "登出",
       ["show-extra-icon"]: true,
       ["extra-icon"]: {
@@ -114,6 +117,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       link: true
     }),
+<<<<<<< HEAD
     m: common_vendor.p({
       border: true,
       clickable: true
@@ -122,6 +126,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     o: common_vendor.sr("popup", "201c0da5-11"),
     p: common_vendor.o($options.change),
     q: common_vendor.p({
+=======
+    k: common_vendor.p({
+      border: true,
+      clickable: true
+    }),
+    l: _ctx.type === "left" || _ctx.type === "right" ? 1 : "",
+    m: common_vendor.sr("popup", "201c0da5-9"),
+    n: common_vendor.o($options.change),
+    o: common_vendor.p({
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
       ["background-color"]: "#fff"
     })
   };

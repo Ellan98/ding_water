@@ -16,11 +16,18 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
+<<<<<<< HEAD
     },
     "condition": false
   },
   "compileType": "miniprogram",
   "libVersion": "3.5.4",
+=======
+    }
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.5.0",
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
   "appid": "wxed289d76dd9159cf",
   "projectname": "ding_water",
   "condition": {

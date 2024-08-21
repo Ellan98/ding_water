@@ -21,8 +21,13 @@ const _sfc_main = {
   setup(__props) {
     pinia_modules_auth.useAuthStore();
     const loginForm = common_vendor.reactive({
+<<<<<<< HEAD
       account: "Ellan",
       password: "Ellan"
+=======
+      account: "ellan",
+      password: "admin"
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
     });
     const rules = {
       account: {

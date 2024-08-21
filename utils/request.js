@@ -18,7 +18,11 @@ const handleRequest = (options, resolve, reject) => {
 	
 	  url:`/api-dev${options.url}`,
     method: options.method,
+<<<<<<< HEAD
     data: options.data,
+=======
+    data: options.data ,
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
     success: (response) => {
       if (response.statusCode == 401) {
         uni.showToast({

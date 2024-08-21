@@ -1,7 +1,11 @@
 <template>
 	<view class="container">
 		<view class="title">
+<<<<<<< HEAD
 			<!-- <LabelTitle /> -->
+=======
+			<LabelTitle />
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
 		</view>
 		<!-- logo 显示 -->
 		<view class="logo-container">

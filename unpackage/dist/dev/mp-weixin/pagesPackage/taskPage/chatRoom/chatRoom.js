@@ -32,6 +32,7 @@ const _sfc_main = {
         d: common_vendor.o((...args) => _ctx.scroll && _ctx.scroll(...args)),
         e: common_vendor.s(`height:calc(100vh - ${common_vendor.unref(height)}px)`),
         f: common_vendor.p({
+<<<<<<< HEAD
           type: "plusempty",
           size: 30
         }),
@@ -41,6 +42,13 @@ const _sfc_main = {
         }),
         h: common_vendor.o((...args) => _ctx.bindTextAreaBlur && _ctx.bindTextAreaBlur(...args)),
         i: common_vendor.o(linechange)
+=======
+          type: "bars",
+          size: "30"
+        }),
+        g: common_vendor.o((...args) => _ctx.bindTextAreaBlur && _ctx.bindTextAreaBlur(...args)),
+        h: common_vendor.o(linechange)
+>>>>>>> 0d855a2fbe841c47ea50356c6c8c5ac660db3253
       };
     };
   }
