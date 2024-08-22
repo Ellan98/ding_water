@@ -90,14 +90,8 @@ let form = ref(null)
 	const submit = () => {
 		
 			form.value.validate().then( async(res) => {
-
-			const data =  await	login(res)
-			if(data.data) {
-				uni.switchTab({
-					url:"/pages/home/index"
-				})
-			}
-			console.log("data",data)
+				await login(res)
+			console.log("data",res)
 			}).catch(err => {
 				console.log('err', err);
 			})

@@ -49,13 +49,8 @@ const _sfc_main = {
     let form = common_vendor.ref(null);
     const submit = () => {
       form.value.validate().then(async (res) => {
-        const data = await api_login.login(res);
-        if (data.data) {
-          common_vendor.index.switchTab({
-            url: "/pages/home/index"
-          });
-        }
-        console.log("data", data);
+        await api_login.login(res);
+        console.log("data", res);
       }).catch((err) => {
         console.log("err", err);
       });

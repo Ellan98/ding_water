@@ -48,7 +48,15 @@
 				</uni-list-item>
 			</uni-list>
 		</view>
-
+		
+		<view class="zone">
+			<uni-list :border="true" :clickable="true">
+				<uni-list-item title="放松一下" :show-extra-icon="true"
+					:extra-icon="{color: '#4e5058',size: '30',type: 'map-pin-ellipse'}" link>
+				</uni-list-item>
+			</uni-list>
+		</view>
+		
 		<view class="zone">
 			<uni-list :border="true" :clickable="true">
 				<uni-list-item title="登出" :show-extra-icon="true"

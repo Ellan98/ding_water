@@ -91,6 +91,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       clickable: true
     }),
     j: common_vendor.p({
+      title: "放松一下",
+      ["show-extra-icon"]: true,
+      ["extra-icon"]: {
+        color: "#4e5058",
+        size: "30",
+        type: "map-pin-ellipse"
+      },
+      link: true
+    }),
+    k: common_vendor.p({
+      border: true,
+      clickable: true
+    }),
+    l: common_vendor.p({
       title: "登出",
       ["show-extra-icon"]: true,
       ["extra-icon"]: {
@@ -100,14 +114,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       },
       link: true
     }),
-    k: common_vendor.p({
+    m: common_vendor.p({
       border: true,
       clickable: true
     }),
-    l: _ctx.type === "left" || _ctx.type === "right" ? 1 : "",
-    m: common_vendor.sr("popup", "201c0da5-9"),
-    n: common_vendor.o($options.change),
-    o: common_vendor.p({
+    n: _ctx.type === "left" || _ctx.type === "right" ? 1 : "",
+    o: common_vendor.sr("popup", "201c0da5-11"),
+    p: common_vendor.o($options.change),
+    q: common_vendor.p({
       ["background-color"]: "#fff"
     })
   };

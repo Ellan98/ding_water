@@ -1,6 +1,7 @@
 <template>
 	<view class="container">
 		<view class="title">
+
 			<LabelTitle />
 		</view>
 		<!-- logo 显示 -->
@@ -48,11 +49,7 @@
 		data() {
 
 			return {
-			  fullText: '', // 从请求获取的全文
-			      displayText: '', // 当前显示的文本
-			      index: 0, // 当前显示的字符索引
-			      intervalTextAnimation: null // 定时器 ID
-
+			
 			}
 		},
 		onLoad() {
@@ -62,25 +59,25 @@
 
 		},
 		onHide() {
-			
+
 		},
 		created() {
-			
+
 		},
-		components:{
+		components: {
 			LabelTitle
 		},
 		watch: {
-			
+
 		},
 		mounted() {
-			
+
 		},
 		destroyed() {
-		
+
 		},
 		methods: {
-			
+
 			selectLogin() {
 				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
 				this.$refs.popup.open("bottom")

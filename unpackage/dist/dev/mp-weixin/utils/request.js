@@ -5,13 +5,14 @@ const request = (options = {}) => {
     handleRequest(options, resolve, reject);
   });
 };
+const BASEURL = "https://ellan.online/api/v2";
 const handleRequest = (options, resolve, reject) => {
   common_vendor.index.showLoading({
     title: "加载中..."
   });
   common_vendor.index.request({
     // url: BASEURL + ':' + options.port + options.url,
-    url: `/api-dev${options.url}`,
+    url: `${BASEURL}${options.url}`,
     method: options.method,
     data: options.data,
     success: (response) => {

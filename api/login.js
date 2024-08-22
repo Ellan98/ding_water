@@ -3,7 +3,8 @@ import request from "/utils/request"
 
 export function login (data) {
 return 	request({
-		url:"/api/v2/auth/login",
+		port:3030,
+		url:"/auth/login",
 		method:'post',
 		data
 	})
@@ -14,7 +15,7 @@ return 	request({
 export function  everyday() {
 return 	new Promise((resolve,reject) => {
 	uni.request({
-	    url: 'https://v1.hitokoto.cn/?c=i', 	    
+	    url: 'https://v1.hitokoto.cn/?c=i',
 	    success: (res) => {
 			resolve(res)
 	    }

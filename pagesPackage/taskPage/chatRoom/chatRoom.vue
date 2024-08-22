@@ -4,26 +4,35 @@
 
 		<scroll-view :scroll-top="scrollTop" scroll-y="true" class="container" @scrolltoupper="upper"
 			@scrolltolower="lower" @scroll="scroll">
-			<template v-for="msg in list">
-				<view id="demo" class="scroll-view-item uni-bg-red">{{msg.data}}</view>
-				
-			</template>
+			<uni-list :border="true">
+				<template v-for="msg in list">
+					<!-- 右侧带角标 -->
+					<uni-section title="2024/8/22 18:07" type="line">
+						<uni-list-item title="spark" class="itemContainer" :note="msg.data">
+							<template v-slot:header>
+								<view class="slot-box">
+									<image class="slot-image" src="/static/login.png" mode="widthFix"></image>
+								</view>
+							</template>
+						</uni-list-item>
+					</uni-section>
+				</template>
+			</uni-list>
 		</scroll-view>
 
 
 	</view>
-	<view class="zone">
+	<view class="keyBoardZone">
+		<view class="zone">
+			<uni-icons type="plusempty" :size="30"></uni-icons>
+			<uni-icons type="bars" :size="30"></uni-icons>
 
-		<uni-icons type="bars" size="30"></uni-icons>
-		<view class="textarea-container">
-			<textarea @blur="bindTextAreaBlur" maxlength="120" @linechange="linechange" :auto-height="true"
-				:show-confirm-bar="false" :adjust-position="false" v-model="questions" />
+			<view class="textarea-container">
+				<textarea class="inputContainer" @blur="bindTextAreaBlur" maxlength="300" @linechange="linechange"
+					:auto-height="true" :show-confirm-bar="false" :adjust-position="false" v-model="questions" />
+			</view>
+			<button type="primary" @click="questionsSparkModel">发送</button>
 		</view>
-
-		<button @click="questionsSparkModel">提问</button>
-
-
-
 
 	</view>
 
@@ -91,7 +100,11 @@
 		let responseData = await sparkModelQuestions({
 			content: questions.value
 		})
+
 		list.value.push(responseData)
+		// list.value.push({
+		// 	data: questions.value
+		// })
 		questions.value = ''
 		console.log("响应数据", responseData)
 	}
@@ -111,31 +124,71 @@
 	.container {
 		height: 100%;
 		margin: 0 auto;
-		width: 95%;
+		width: 100%;
 	}
 
-	.zone {
-		align-items: center;
+	/* ================== begin input style ==================*/
+
+	.keyBoardZone {
 		border: 1px solid black;
-		display: flex;
-		height: 150rpx;
-		justify-content: space-around;
+		height: 120rpx;
+		position: relative;
 		width: 99%;
 	}
 
-
-	.scroll-view-item {
-		border-bottom: 1px solid red;
+	.zone {
+		display: flex;
+		justify-content: space-around;
 		height: 100%;
-		text-align: center;
-		font-size: 36rpx;
-		width: 100%;
-		
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		top: 20rpx;
+		width: 96%;
 	}
 
-	/* 	.textarea-container:deep(".tex") {
-		border: 2rpx solid #e0e0e0;
+
+	.textarea-container {
+		height: 100rpx;
+		margin: 0 10rpx;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		padding: 6rpx 20rpx;
+		text-wrap: wrap;
+		width: 70%;
+	}
+
+	.textarea-container .inputContainer {
+		border: 1px solid #353535;
+		border-radius: 10rpx;
+		min-heigth: 70rpx;
+		padding: 6rpx 0;
+		width: 99%;
+	}
+
+	.zone button {
+		font-size: 28rpx;
 		height: 60rpx;
-		max-height: 120rpx;
-	} */
+		line-height: 60rpx;
+		text-align: center;
+		text-wrap: nowrap;
+		width: 120rpx;
+	}
+
+	/* ================== end input style ==================*/
+
+	.chatContainer .uni-list-item__container {
+		border: 1px solid red;
+		height: 100%;
+		padding: 0;
+	}
+
+
+
+	.slot-box image {
+		border-radius: 10rpx;
+		height: 80rpx;
+		margin: 10rpx;
+		width: 80rpx;
+	}
 </style>

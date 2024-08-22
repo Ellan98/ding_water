@@ -20,14 +20,14 @@ const _sfc_main = {
     await this.getFullText();
     this.startTyping();
   },
-  mounted() {
+  beforeDestroy() {
     clearInterval(this.intervalTextAnimation);
   },
   methods: {
     async getFullText() {
       try {
-        const responseData = await api_login.everyday().data;
-        this.fullText = responseData ? `${responseData.hitokoto} ${responseData.from_who ?? ""} -《${responseData.from ?? ""}》` : "出现未知错误。";
+        const responseData = (await api_login.everyday()).data;
+        this.fullText = responseData ? `${responseData.hitokoto} ${responseData.from_who ?? ""} -《${responseData.from ?? ""}》` : " 落叶别树，飘零随风。客无所托，悲与此同。";
       } catch (error) {
         console.error("Error fetching new text:", error);
         this.fullText = " 落叶别树，飘零随风。客无所托，悲与此同。";

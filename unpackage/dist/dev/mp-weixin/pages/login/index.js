@@ -4,16 +4,7 @@ const common_assets = require("../../common/assets.js");
 const LabelTitle = () => "./components/label-title/label-title.js";
 const _sfc_main = {
   data() {
-    return {
-      fullText: "",
-      // 从请求获取的全文
-      displayText: "",
-      // 当前显示的文本
-      index: 0,
-      // 当前显示的字符索引
-      intervalTextAnimation: null
-      // 定时器 ID
-    };
+    return {};
   },
   onLoad() {
   },

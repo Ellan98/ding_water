@@ -2,6 +2,9 @@
   "disableScroll": true,
   "navigationBarTitleText": "robot",
   "usingComponents": {
+    "uni-list-item": "../../../uni_modules/uni-list/components/uni-list-item/uni-list-item",
+    "uni-section": "../../../uni_modules/uni-section/components/uni-section/uni-section",
+    "uni-list": "../../../uni_modules/uni-list/components/uni-list/uni-list",
     "uni-icons": "../../../uni_modules/uni-icons/components/uni-icons/uni-icons"
   }
 }
