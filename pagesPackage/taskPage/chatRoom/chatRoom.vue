@@ -4,9 +4,10 @@
 
 		<scroll-view :scroll-top="scrollTop" scroll-y="true" class="container" @scrolltoupper="upper"
 			@scrolltolower="lower" @scroll="scroll">
-			<view id="demo1" class="scroll-view-item uni-bg-red">A</view>
-			<view id="demo2" class="scroll-view-item uni-bg-green">B</view>
-			<view id="demo3" class="scroll-view-item uni-bg-blue">C</view>
+			<template v-for="msg in list">
+				<view id="demo" class="scroll-view-item uni-bg-red">{{msg.data}}</view>
+				
+			</template>
 		</scroll-view>
 
 
@@ -16,8 +17,10 @@
 		<uni-icons type="bars" size="30"></uni-icons>
 		<view class="textarea-container">
 			<textarea @blur="bindTextAreaBlur" maxlength="120" @linechange="linechange" :auto-height="true"
-				:show-confirm-bar="false" :adjust-position="false" />
+				:show-confirm-bar="false" :adjust-position="false" v-model="questions" />
 		</view>
+
+		<button @click="questionsSparkModel">提问</button>
 
 
 
@@ -32,8 +35,12 @@
 		onMounted,
 		nextTick,
 		ref,
-		computed
+		computed,
+		watch
 	} from 'vue'
+	import {
+		sparkModelQuestions
+	} from "/api/spark_model/index.js"
 
 	let height = ref(75)
 	let triggered = ref(false)
@@ -73,6 +80,24 @@
 		})
 	})
 
+	// spark model module
+
+	let questions = ref("")
+
+
+	// 消息 列表
+	let list = ref([])
+	const questionsSparkModel = async () => {
+		let responseData = await sparkModelQuestions({
+			content: questions.value
+		})
+		list.value.push(responseData)
+		questions.value = ''
+		console.log("响应数据", responseData)
+	}
+
+
+
 
 	// keyboardFocus
 </script>
@@ -100,13 +125,15 @@
 
 
 	.scroll-view-item {
-		height: 300rpx;
-		line-height: 300rpx;
+		border-bottom: 1px solid red;
+		height: 100%;
 		text-align: center;
 		font-size: 36rpx;
+		width: 100%;
+		
 	}
 
-/* 	.textarea-container:deep(".tex") {
+	/* 	.textarea-container:deep(".tex") {
 		border: 2rpx solid #e0e0e0;
 		height: 60rpx;
 		max-height: 120rpx;

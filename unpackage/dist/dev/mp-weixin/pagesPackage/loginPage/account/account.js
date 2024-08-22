@@ -21,8 +21,8 @@ const _sfc_main = {
   setup(__props) {
     pinia_modules_auth.useAuthStore();
     const loginForm = common_vendor.reactive({
-      account: "ellan",
-      password: "admin"
+      account: "Ellan",
+      password: "Ellan"
     });
     const rules = {
       account: {
@@ -49,8 +49,12 @@ const _sfc_main = {
     let form = common_vendor.ref(null);
     const submit = () => {
       form.value.validate().then(async (res) => {
-        res.code = "000";
         const data = await api_login.login(res);
+        if (data.data) {
+          common_vendor.index.switchTab({
+            url: "/pages/home/index"
+          });
+        }
         console.log("data", data);
       }).catch((err) => {
         console.log("err", err);

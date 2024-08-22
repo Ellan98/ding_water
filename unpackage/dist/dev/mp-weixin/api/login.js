@@ -3,7 +3,6 @@ const common_vendor = require("../common/vendor.js");
 const utils_request = require("../utils/request.js");
 function login(data) {
   return utils_request.request({
-    port: 3e3,
     url: "/api/v2/auth/login",
     method: "post",
     data

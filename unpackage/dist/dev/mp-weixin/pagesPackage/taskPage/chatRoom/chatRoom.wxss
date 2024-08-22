@@ -17,13 +17,14 @@
 		width: 99%;
 }
 .scroll-view-item.data-v-70f386d9 {
-		height: 300rpx;
-		line-height: 300rpx;
+		border-bottom: 1px solid red;
+		height: 100%;
 		text-align: center;
 		font-size: 36rpx;
+		width: 100%;
 }
 
-/* 	.textarea-container:deep(".tex") {
+	/* 	.textarea-container:deep(".tex") {
 		border: 2rpx solid #e0e0e0;
 		height: 60rpx;
 		max-height: 120rpx;

@@ -17,9 +17,9 @@
 		width: 100rpx;
 }
 .container.data-v-4978fed5 {
-		padding:0 20rpx;
+		padding: 0 20rpx;
 }
 .calendar-content.data-v-4978fed5 {
-		border-bottom:4rpx solid #f4f7fc;
-		margin-bottom:20rpx;
+		border-bottom: 4rpx solid #f4f7fc;
+		margin-bottom: 20rpx;
 }

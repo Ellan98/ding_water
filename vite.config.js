@@ -11,7 +11,7 @@ export default defineConfig({
         port: 5173,
         proxy: {
             '/api-dev': {
-                target: 'http://127.0.0.1:3030/api/v2',
+                target: 'http://ellan.online:3030/api/v2',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api-dev/, ''), // 此处进行路径重写
             }

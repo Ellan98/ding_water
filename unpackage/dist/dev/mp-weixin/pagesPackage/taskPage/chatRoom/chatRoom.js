@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
+const api_spark_model_index = require("../../../api/spark_model/index.js");
 if (!Array) {
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
   _easycom_uni_icons2();
@@ -24,19 +25,37 @@ const _sfc_main = {
         console.log(res.height);
       });
     });
+    let questions = common_vendor.ref("");
+    let list = common_vendor.ref([]);
+    const questionsSparkModel = async () => {
+      let responseData = await api_spark_model_index.sparkModelQuestions({
+        content: questions.value
+      });
+      list.value.push(responseData);
+      questions.value = "";
+      console.log("响应数据", responseData);
+    };
     return (_ctx, _cache) => {
       return {
-        a: _ctx.scrollTop,
-        b: common_vendor.o((...args) => _ctx.upper && _ctx.upper(...args)),
-        c: common_vendor.o((...args) => _ctx.lower && _ctx.lower(...args)),
-        d: common_vendor.o((...args) => _ctx.scroll && _ctx.scroll(...args)),
-        e: common_vendor.s(`height:calc(100vh - ${common_vendor.unref(height)}px)`),
-        f: common_vendor.p({
+        a: common_vendor.f(common_vendor.unref(list), (msg, k0, i0) => {
+          return {
+            a: common_vendor.t(msg.data)
+          };
+        }),
+        b: _ctx.scrollTop,
+        c: common_vendor.o((...args) => _ctx.upper && _ctx.upper(...args)),
+        d: common_vendor.o((...args) => _ctx.lower && _ctx.lower(...args)),
+        e: common_vendor.o((...args) => _ctx.scroll && _ctx.scroll(...args)),
+        f: common_vendor.s(`height:calc(100vh - ${common_vendor.unref(height)}px)`),
+        g: common_vendor.p({
           type: "bars",
           size: "30"
         }),
-        g: common_vendor.o((...args) => _ctx.bindTextAreaBlur && _ctx.bindTextAreaBlur(...args)),
-        h: common_vendor.o(linechange)
+        h: common_vendor.o((...args) => _ctx.bindTextAreaBlur && _ctx.bindTextAreaBlur(...args)),
+        i: common_vendor.o(linechange),
+        j: common_vendor.unref(questions),
+        k: common_vendor.o(($event) => common_vendor.isRef(questions) ? questions.value = $event.detail.value : questions = $event.detail.value),
+        l: common_vendor.o(questionsSparkModel)
       };
     };
   }

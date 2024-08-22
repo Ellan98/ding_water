@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const api_home_index = require("../../api/home/index.js");
 const common_assets = require("../../common/assets.js");
 function getDate(date, AddDayCount = 0) {
   if (!date) {
@@ -25,6 +26,8 @@ const _sfc_main = {
   components: {},
   data() {
     return {
+      loading: false,
+      taskList: void 0,
       info: {
         lunar: true,
         range: true,
@@ -67,8 +70,16 @@ const _sfc_main = {
         }
       ];
     }, 2e3);
+    this.taskListData();
+  },
+  async mounted() {
+    await common_vendor.nextTick$1();
   },
   methods: {
+    async taskListData() {
+      let data = (await api_home_index.getTaskList()).data;
+      this.taskList = data.data;
+    },
     change(e) {
       console.log("change 返回:", e);
       if (this.info.selected.length > 5)
@@ -116,12 +127,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     d: common_vendor.p({
       selected: $data.info.selected
     }),
-    e: common_vendor.p({
-      title: "分组1"
+    e: common_vendor.f($data.taskList, (item, k0, i0) => {
+      return {
+        a: common_vendor.t(item.title)
+      };
     }),
     f: common_vendor.p({
-      title: "分组1",
-      top: "20"
+      title: "分组1"
     }),
     g: common_vendor.p({
       title: "分组1",
@@ -136,12 +148,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       top: "20"
     }),
     j: common_vendor.p({
+      title: "分组1",
+      top: "20"
+    }),
+    k: common_vendor.p({
       title: "任务",
       type: "line",
       top: "20"
     }),
-    k: common_assets._imports_0$1,
-    l: common_vendor.o((...args) => $options.task && $options.task(...args))
+    l: common_assets._imports_0$1,
+    m: common_vendor.o((...args) => $options.task && $options.task(...args))
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-4978fed5"]]);
