@@ -12,9 +12,18 @@ const _sfc_main = {
       // 当前显示的字符索引
       intervalTextAnimation: null,
       // 定时器 ID
-      isDeleting: false
+      isDeleting: false,
       // 是否在删除动画中
+      status: true
     };
+  },
+  onShow() {
+    this.status = true;
+  },
+  onHide() {
+    this.status = false;
+    clearInterval(this.intervalTextAnimation);
+    console.log(this.status);
   },
   async created() {
     await this.getFullText();
@@ -59,9 +68,11 @@ const _sfc_main = {
             this.type();
           } else {
             this.isDeleting = false;
-            this.getFullText().then(() => {
-              this.startTyping();
-            });
+            if (this.status) {
+              this.getFullText().then(() => {
+                this.startTyping();
+              });
+            }
           }
         }
       }, 100);

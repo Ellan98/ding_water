@@ -29,16 +29,16 @@
 	} from "/api/home/index.js"
 	import useLoading from "/hooks/loading"
 
-	
+
 	export default {
 		components: {},
 		data() {
 			return {
-			
+
 			}
 		},
 		onReady() {
-			
+
 
 
 
@@ -101,5 +101,4 @@
 		height: 100rpx;
 		width: 100rpx;
 	}
-
 </style>

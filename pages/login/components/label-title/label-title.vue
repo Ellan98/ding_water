@@ -19,13 +19,23 @@ export default {
       displayText: '', // 当前显示的文本
       index: 0, // 当前显示的字符索引
       intervalTextAnimation: null, // 定时器 ID
-      isDeleting: false // 是否在删除动画中
+      isDeleting: false, // 是否在删除动画中
+	  status:true,
     };
+  },
+  onShow() {
+	this.status = true
+  },
+  onHide() {  
+  	this.status = false
+	 clearInterval(this.intervalTextAnimation); // 在组件销毁前清除定时器
+	 console.log(this.status)
   },
   async created() {
     await this.getFullText();
     this.startTyping();
   },
+  
   beforeDestroy() {
     clearInterval(this.intervalTextAnimation); // 在组件销毁前清除定时器
   },
@@ -67,9 +77,14 @@ export default {
             this.type();
           } else {
             this.isDeleting = false;
-            this.getFullText().then(() => {
-              this.startTyping();
-            });
+			
+				if(this.status) {
+					this.getFullText().then(() => {
+					  this.startTyping();
+					});
+				};
+			
+            
           }
         }
       }, 100); // 每隔100ms添加或删除一个字符

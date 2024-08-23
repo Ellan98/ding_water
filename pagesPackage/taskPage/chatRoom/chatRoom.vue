@@ -3,21 +3,35 @@
 	<view class="list-container" :style="`height:calc(100vh - ${height}px)`">
 
 		<scroll-view :scroll-top="scrollTop" scroll-y="true" class="container" @scrolltoupper="upper"
-			@scrolltolower="lower" @scroll="scroll">
-			<uni-list :border="true">
-				<template v-for="msg in list">
-					<!-- 右侧带角标 -->
-					<uni-section title="2024/8/22 18:07" type="line">
-						<uni-list-item title="spark" class="itemContainer" :note="msg.data">
-							<template v-slot:header>
-								<view class="slot-box">
-									<image class="slot-image" src="/static/login.png" mode="widthFix"></image>
+			@scrolltolower="lower" @scroll="scroll" :scroll-with-animation="true"
+			:scroll-into-view=" 'message-' + scrollIntoView">
+			<!-- <uni-list :border="true"> -->
+			<template v-for="msg in list">
+				<!-- 右侧带角标 -->
+				<uni-section :title="msg.date" type="line">
+					<uni-transition mode-class="fade" :show="true">
+						<uni-list-item class="list-item-container">
+							<template v-slot:header v-if='msg.type == "other"'>
+								<view class="list-item-container-header">
+									<image class="slot-image" src="/static/robot.png" mode="widthFix"></image>
+								</view>
+							</template>
+							<template v-slot:body>
+								<view class="list-item-container-body">
+									<text
+										:style="msg.type == 'myself'? {float:'right'} : {float:'left'} ">{{msg.content}}</text>
+								</view>
+							</template>
+							<template v-slot:footer v-if='msg.type == "myself"'>
+								<view class="list-item-container-header">
+									<image class="slot-image" src="/static/robot.png" mode="widthFix"></image>
 								</view>
 							</template>
 						</uni-list-item>
-					</uni-section>
-				</template>
-			</uni-list>
+					</uni-transition>
+				</uni-section>
+			</template>
+			<!-- </uni-list> -->
 		</scroll-view>
 
 
@@ -31,7 +45,7 @@
 				<textarea class="inputContainer" @blur="bindTextAreaBlur" maxlength="300" @linechange="linechange"
 					:auto-height="true" :show-confirm-bar="false" :adjust-position="false" v-model="questions" />
 			</view>
-			<button type="primary" @click="questionsSparkModel">发送</button>
+			<button type="primary" @click="questionsSparkModel" :disabled="disabled">发送</button>
 		</view>
 
 	</view>
@@ -50,17 +64,11 @@
 	import {
 		sparkModelQuestions
 	} from "/api/spark_model/index.js"
+	import {
+		date
+	} from "/utils/date.js"
 
 	let height = ref(75)
-	let triggered = ref(false)
-
-
-	const onLoad = () => {
-		_freshing = false;
-		setTimeout(() => {
-			triggered.value = true;
-		}, 1000)
-	}
 
 
 	const goTop = function(e) {
@@ -94,19 +102,63 @@
 	let questions = ref("")
 
 
+	let scrollIntoView = ref('')
+
+	let disabled = ref(false)
 	// 消息 列表
 	let list = ref([])
-	const questionsSparkModel = async () => {
-		let responseData = await sparkModelQuestions({
+	const questionsSparkModel = () => {
+
+		disabled.value = true
+		list.value.push({
+			date: date(),
+			type: 'myself',
 			content: questions.value
 		})
 
-		list.value.push(responseData)
-		// list.value.push({
-		// 	data: questions.value
-		// })
-		questions.value = ''
-		console.log("响应数据", responseData)
+
+
+
+		// 关闭之前的连接
+
+
+		const eventSource = new EventSource(`/api-dev/spark/conversation?content=${questions.value.trim()}`);
+		eventSource.onmessage = (e) => {
+
+
+
+			const newMessage = e.data.content;
+			console.log( JSON.parse(e.data))
+			// showTypingEffect(newMessage);
+
+
+			if (e.data == '[DONE]') {
+				console.log("响应结束")
+				disabled.value = false
+				eventSource.close()
+			}
+		};
+
+		const showTypingEffect = (text) => {
+			let index = 0;
+			const interval = setInterval(() => {
+				if (index < text.length) {
+						let messages = ''
+					messages += text[ index++ ];
+					list.value.push({
+						date: date(),
+						type: 'other',
+						content: messages
+					})
+
+				} else {
+					clearInterval(interval);
+				}
+			}, 50); // 50ms 控制文字显示速度
+		};
+
+
+
 	}
 
 
@@ -185,10 +237,32 @@
 
 
 
-	.slot-box image {
+	.list-item-container {
+		border: 1px solid black;
+	}
+
+	.list-item-container-header {
+		border: 1px solid green;
+	}
+
+	.list-item-container-header image {
 		border-radius: 10rpx;
 		height: 80rpx;
 		margin: 10rpx;
 		width: 80rpx;
+	}
+
+
+	.list-item-container-body {
+		border: 1px solid blue;
+		height: 100%;
+		margin: 30rpx 10rpx;
+		width: calc(100% - 100rpx);
+		/* padding: 10rpx; */
+		text-wrap: wrap;
+	}
+
+	.list-item-container-body .content {
+		float: right;
 	}
 </style>

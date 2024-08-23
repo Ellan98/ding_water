@@ -29,12 +29,11 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _component_LabelTitle = common_vendor.resolveComponent("LabelTitle");
   const _easycom_uni_list_item2 = common_vendor.resolveComponent("uni-list-item");
   const _easycom_uni_list2 = common_vendor.resolveComponent("uni-list");
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
-  (_component_LabelTitle + _easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2)();
+  (_easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2)();
 }
 const _easycom_uni_list_item = () => "../../uni_modules/uni-list/components/uni-list-item/uni-list-item.js";
 const _easycom_uni_list = () => "../../uni_modules/uni-list/components/uni-list/uni-list.js";
@@ -72,7 +71,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "登录方式",
       type: "line"
     }),
-    h: common_vendor.sr("popup", "d08ef7d4-1"),
+    h: common_vendor.sr("popup", "d08ef7d4-0"),
     i: common_vendor.p({
       ["background-color"]: "#fff",
       ["border-radius"]: "20px 20px 0 0"
