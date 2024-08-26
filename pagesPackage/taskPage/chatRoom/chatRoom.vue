@@ -70,6 +70,8 @@
 		date
 	} from "/utils/date.js"
 
+	import EventSource from "/utils/eventSource.js"
+
 	let height = ref(75)
 
 
@@ -100,25 +102,25 @@
 	})
 
 
-const gradually = () => {
-  let index = 0;
-      if (list.value.length === 0) return;
+	const gradually = () => {
+		let index = 0;
+		if (list.value.length === 0) return;
 
-      let currentMessage = '';
-      
-      const intervalId = setInterval(() => {
-        if (index < list.value[list.value.length - 1].fullText.length) {
-          currentMessage += list.value[list.value.length - 1].fullText[index];
-          list.value[list.value.length - 1].content = currentMessage;
-          index++;
-        } else {
-          clearInterval(intervalId);
-         
-        }
-      }, 50); // 每50毫秒更新一次
-}
+		let currentMessage = '';
 
-  
+		const intervalId = setInterval(() => {
+			if (index < list.value[list.value.length - 1].fullText.length) {
+				currentMessage += list.value[list.value.length - 1].fullText[index];
+				list.value[list.value.length - 1].content = currentMessage;
+				index++;
+			} else {
+				clearInterval(intervalId);
+
+			}
+		}, 50); // 每50毫秒更新一次
+	}
+
+
 
 
 
@@ -137,64 +139,97 @@ const gradually = () => {
 	/*#ifdef H5*/
 	const BASEURL = "/api-dev";
 	/*#endif*/
-	
+
 	//微信小程序端
 	/*#ifdef MP*/
 	const BASEURL = "https://ellan.online/api/v2";
 	/*#endif*/
-	
+
 	const questionsSparkModel = async () => {
 
-  disabled.value = true
+		disabled.value = true
 
 
-  list.value.push({
-    id: index.value,
-    date: date(),
-    type: 'myself',
-    content: questions.value,
-  })
+		list.value.push({
+			id: index.value,
+			date: date(),
+			type: 'myself',
+			content: questions.value,
+		})
 
 
 
-  // 关闭之前的连接
-  const eventSource = new EventSource(`${BASEURL}/spark/conversation?content=${questions.value.trim()}`);
-  // 消息 容器
-  let fullText = ""
-  eventSource.onmessage = (e) => {
+		// 关闭之前的连接
+		const eventSource = new EventSource(`${BASEURL}/spark/conversation?content=${questions.value.trim()}`);
+		// 消息 容器
+		let fullText = ""
 
-    fullText += JSON.parse(e.data)["choices"][0]["delta"]["content"] 
- 
-    console.log("data", JSON.parse(e.data))
+		// 监听消息事件
+		eventSource.addEventListener('message', (e) => {
 
- 
+			fullText += JSON.parse(e.data)["choices"][0]["delta"]["content"]
 
-
-    if (JSON.parse(e.data)["usage"] ) {
-      console.log("响应结束")
-	  list.value.push({
-	    id: index.value,
-	    date: date(),
-	    type: 'other',
-	    content: '',
-	    fullText: fullText
-	  })
-	  
-	    gradually()
-      disabled.value = false
-	  questions.value=""
-      eventSource.close()
-    }
-
-  }
+			console.log("data", JSON.parse(e.data))
 
 
-  
-  await nextTick()
 
 
-  scrollIntoView.value = index.value
-  index.value++
+			if (JSON.parse(e.data)["usage"]) {
+				console.log("响应结束")
+				list.value.push({
+					id: index.value,
+					date: date(),
+					type: 'other',
+					content: '',
+					fullText: fullText
+				})
+
+				gradually()
+				disabled.value = false
+				questions.value = ""
+				eventSource.close()
+			}
+
+
+		});
+
+
+
+
+		//  eventSource.onmessage = (e) => {
+
+		//    fullText += JSON.parse(e.data)["choices"][0]["delta"]["content"] 
+
+		//    console.log("data", JSON.parse(e.data))
+
+
+
+
+		//    if (JSON.parse(e.data)["usage"] ) {
+		//      console.log("响应结束")
+		//   list.value.push({
+		//     id: index.value,
+		//     date: date(),
+		//     type: 'other',
+		//     content: '',
+		//     fullText: fullText
+		//   })
+
+		//     gradually()
+		//      disabled.value = false
+		//   questions.value=""
+		//      eventSource.close()
+		//    }
+
+		//  }
+
+
+
+		await nextTick()
+
+
+		scrollIntoView.value = index.value
+		index.value++
 	}
 
 

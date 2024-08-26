@@ -2,6 +2,7 @@
 const common_vendor = require("../../../common/vendor.js");
 const common_assets = require("../../../common/assets.js");
 const utils_date = require("../../../utils/date.js");
+const utils_eventSource = require("../../../utils/eventSource.js");
 if (!Array) {
   const _easycom_uni_list_item2 = common_vendor.resolveComponent("uni-list-item");
   const _easycom_uni_transition2 = common_vendor.resolveComponent("uni-transition");
@@ -60,9 +61,9 @@ const _sfc_main = {
         type: "myself",
         content: questions.value
       });
-      const eventSource = new EventSource(`${BASEURL}/spark/conversation?content=${questions.value.trim()}`);
+      const eventSource = new utils_eventSource.EventSource(`${BASEURL}/spark/conversation?content=${questions.value.trim()}`);
       let fullText = "";
-      eventSource.onmessage = (e) => {
+      eventSource.addEventListener("message", (e) => {
         fullText += JSON.parse(e.data)["choices"][0]["delta"]["content"];
         console.log("data", JSON.parse(e.data));
         if (JSON.parse(e.data)["usage"]) {
@@ -79,7 +80,7 @@ const _sfc_main = {
           questions.value = "";
           eventSource.close();
         }
-      };
+      });
       await common_vendor.nextTick$1();
       scrollIntoView.value = index.value;
       index.value++;
