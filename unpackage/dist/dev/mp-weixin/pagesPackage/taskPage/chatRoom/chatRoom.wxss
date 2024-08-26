@@ -53,16 +53,11 @@
 
 	/* ================== end input style ==================*/
 .chatContainer .uni-list-item__container.data-v-70f386d9 {
-		border: 1px solid red;
 		height: 100%;
 		padding: 0;
 }
-.list-item-container.data-v-70f386d9 {
-		border: 1px solid black;
-}
-.list-item-container-header.data-v-70f386d9 {
-		border: 1px solid green;
-}
+.list-item-container.data-v-70f386d9 {}
+.list-item-container-header.data-v-70f386d9 {}
 .list-item-container-header image.data-v-70f386d9 {
 		border-radius: 10rpx;
 		height: 80rpx;
@@ -70,13 +65,22 @@
 		width: 80rpx;
 }
 .list-item-container-body.data-v-70f386d9 {
-		border: 1px solid blue;
 		height: 100%;
 		margin: 30rpx 10rpx;
 		width: calc(100% - 100rpx);
-		/* padding: 10rpx; */
+		padding: 10rpx;
 		text-wrap: wrap;
 }
 .list-item-container-body .content.data-v-70f386d9 {
 		float: right;
+}
+.content-Container.data-v-70f386d9 {
+		height: 100%;
+		text-wrap: wrap;
+		word-wrap: break-word;
+		/* 允许单词在容器边界处换行 */
+		word-break: break-all;
+		/* 强制在任何字符之间进行断行 */
+		overflow-wrap: break-word;
+		/* 类似于 word-wrap，旧名称 */
 }
