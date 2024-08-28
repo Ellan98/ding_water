@@ -1,63 +1,68 @@
 
-.list-container.data-v-70f386d9 {
-		border: 1px solid red;
+.scrollViewContainer.data-v-70f386d9 {
+		transition: height 0.5s ease-in-out, transform 0.5s ease-in-out;
 		width: 99%;
-}
-.container.data-v-70f386d9 {
-		height: 100%;
-		margin: 0 auto;
-		width: 100%;
 }
 
 	/* ================== begin input style ==================*/
 .keyBoardZone.data-v-70f386d9 {
-		border: 1px solid black;
-		height: 120rpx;
+		background-color: #f4f7fc;
+		border-top: 1px solid aliceblue;
 		position: relative;
+		transition: height 0.5s ease-in-out, transform 0.5s ease-in-out;
 		width: 99%;
 }
-.zone.data-v-70f386d9 {
-		display: flex;
-		justify-content: space-around;
-		height: 100%;
-		left: 50%;
+.keyBoardZone image.data-v-70f386d9 {
+		height: 60rpx;
 		position: absolute;
-		transform: translateX(-50%);
-		top: 20rpx;
-		width: 96%;
+		bottom: 40rpx;
+		width: 60rpx;
 }
-.textarea-container.data-v-70f386d9 {
-		height: 100rpx;
-		margin: 0 10rpx;
-		overflow-y: scroll;
-		overflow-x: hidden;
-		padding: 6rpx 20rpx;
-		text-wrap: wrap;
-		width: 70%;
+.keyBoardZone .image-increase.data-v-70f386d9 {
+		left: 20rpx;
 }
-.textarea-container .inputContainer.data-v-70f386d9 {
-		border: 1px solid #353535;
-		border-radius: 10rpx;
-		min-heigth: 70rpx;
-		padding: 6rpx 0;
-		width: 99%;
+.keyBoardZone .image-more.data-v-70f386d9 {
+		left: 100rpx;
 }
-.zone button.data-v-70f386d9 {
+
+
+
+
+	/* 消息发送按钮样式 */
+.keyBoardZone .content-button.data-v-70f386d9 {
+		bottom: 40rpx;
 		font-size: 28rpx;
 		height: 60rpx;
 		line-height: 60rpx;
+		position: absolute;
 		text-align: center;
 		text-wrap: nowrap;
+		right: 20rpx;
 		width: 120rpx;
 }
 
-	/* ================== end input style ==================*/
-.chatContainer .uni-list-item__container.data-v-70f386d9 {
-		height: 100%;
-		padding: 0;
+
+	/* 输入框样式 */
+.keyBoardZone .textarea-container.data-v-70f386d9 {
+		background-color: #ebedef;
+		bottom: 40rpx;
+		border-radius: 10rpx;
+		left: 50%;
+		/* 强制在任何字符之间进行断行 */
+		overflow-wrap: break-word;
+		padding: 10rpx;
+		position: absolute;
+		text-wrap: wrap;
+		transform: translateX(-50%);
+		word-wrap: break-word;
+		/* 允许单词在容器边界处换行 */
+		word-break: break-all;
+		/* 类似于 word-wrap，旧名称 */
+		width: 50%;
 }
-.list-item-container.data-v-70f386d9 {}
-.list-item-container-header.data-v-70f386d9 {}
+
+
+	/* ================== end input style ==================*/
 .list-item-container-header image.data-v-70f386d9 {
 		border-radius: 10rpx;
 		height: 80rpx;
@@ -71,11 +76,11 @@
 		padding: 10rpx;
 		text-wrap: wrap;
 }
-.list-item-container-body .content.data-v-70f386d9 {
-		float: right;
-}
 .content-Container.data-v-70f386d9 {
+		background-color: aliceblue;
+		border-radius: 10rpx;
 		height: 100%;
+		padding: 20rpx;
 		text-wrap: wrap;
 		word-wrap: break-word;
 		/* 允许单词在容器边界处换行 */
@@ -83,4 +88,54 @@
 		/* 强制在任何字符之间进行断行 */
 		overflow-wrap: break-word;
 		/* 类似于 word-wrap，旧名称 */
+}
+
+
+	/* From Uiverse.io by terenceodonoghue */
+.load-content.data-v-70f386d9 {
+		border-radius: 50%;
+		height: 48rpx;
+		width: 48rpx;
+		animation: rotate_3922-70f386d9 1.2s linear infinite;
+		background-color: #9b59b6;
+		background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+}
+.load-content text.data-v-70f386d9 {
+		position: absolute;
+		border-radius: 50%;
+		height: 100%;
+		width: 100%;
+		background-color: #9b59b6;
+		background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+}
+.load-content text.data-v-70f386d9:nth-of-type(1) {
+		filter: blur(5rpx);
+}
+.load-content text.data-v-70f386d9:nth-of-type(2) {
+		filter: blur(10rpx);
+}
+.load-content text.data-v-70f386d9:nth-of-type(3) {
+		filter: blur(25rpx);
+}
+.load-content text.data-v-70f386d9:nth-of-type(4) {
+		filter: blur(50rpx);
+}
+.load-content.data-v-70f386d9::after {
+		content: "";
+		position: absolute;
+		top: 10rpx;
+		left: 10rpx;
+		right: 10rpx;
+		bottom: 10rpx;
+		background-color: #fff;
+		border: solid 5rpx #ffffff;
+		border-radius: 50%;
+}
+@keyframes rotate_3922-70f386d9 {
+from {
+			transform: translate(-50%, -50%) rotate(0deg);
+}
+to {
+			transform: translate(-50%, -50%) rotate(360deg);
+}
 }

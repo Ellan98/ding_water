@@ -21,16 +21,14 @@ const _sfc_main = {
     this.status = true;
   },
   onHide() {
-    this.status = false;
-    clearInterval(this.intervalTextAnimation);
-    console.log(this.status);
+    clearTimeout(this.intervalTextAnimation);
   },
   async created() {
     await this.getFullText();
     this.startTyping();
   },
   beforeDestroy() {
-    clearInterval(this.intervalTextAnimation);
+    clearTimeout(this.intervalTextAnimation);
   },
   methods: {
     async getFullText() {

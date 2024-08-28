@@ -27,9 +27,8 @@ export default {
 	this.status = true
   },
   onHide() {  
-  	this.status = false
-	 clearInterval(this.intervalTextAnimation); // 在组件销毁前清除定时器
-	 console.log(this.status)
+	  clearTimeout(this.intervalTextAnimation)
+  	
   },
   async created() {
     await this.getFullText();
@@ -37,7 +36,7 @@ export default {
   },
   
   beforeDestroy() {
-    clearInterval(this.intervalTextAnimation); // 在组件销毁前清除定时器
+    clearTimeout(this.intervalTextAnimation); // 在组件销毁前清除定时器
   },
   methods: {
     async getFullText() {

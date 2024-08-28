@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
+		
 		<view class="title">
-
 			<!-- <LabelTitle /> -->
 		</view>
 		<!-- logo 显示 -->
@@ -27,7 +27,7 @@
 					<uni-list :border="true" :clickable="true">
 
 						<uni-list-item class="robot" title="微信登录" showArrow thumb="/static/icon/wechat.png"
-							thumb-size="lg" link="switchTab" to="/pages/home/index"></uni-list-item>
+							thumb-size="lg" link="switchTab" @click="$refs.tips.open()" ></uni-list-item>
 
 						<uni-list-item class="robot" title="账户密码登录" @click="accountLogin" showArrow
 							thumb="/static/icon/plane.png" thumb-size="lg" link="navigateTo"
@@ -36,6 +36,13 @@
 				</uni-section>
 
 			</view>
+		</uni-popup>
+	</view>
+	
+	<view>
+		<!-- 提示信息弹窗 -->
+		<uni-popup ref="tips" type="message">
+			<uni-popup-message type="error" message="请使用账号密码登录" :duration="2000"></uni-popup-message>
 		</uni-popup>
 	</view>
 </template>

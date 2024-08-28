@@ -1,3 +1,7 @@
+import {
+	getLocalStorage
+} from "./storage.js"
+
 // 请求工具
 const request = (options = {}) => {
 	return new Promise((resolve, reject) => {
@@ -23,24 +27,25 @@ const handleRequest = (options, resolve, reject) => {
 	});
 
 	uni.request({
-		// url: BASEURL + ':' + options.port + options.url,
-
 		url: `${BASEURL}${options.url}`,
 		method: options.method,
 		data: options.data,
 		success: (response) => {
 			if (response.statusCode == 401) {
-				uni.showToast({
-					icon: 'error',
-					position: 'top',
-					title: "请尝试登录"
+				uni.showLoading({
+					title: "即将跳转到登录页面",
+					success: () => {
+						uni.switchTab({
+							url: "/pages/home/index"
+						})
+					}
 				});
 				return;
 			}
-			resolve(response); // 修正此处，移除 return 以确保正确解析 Promise
+
+			resolve(response.data); // 修正此处，移除 return 以确保正确解析 Promise
 		},
 		fail: (err) => {
-			console.log('error', err);
 			reject(err); // 修正此处，移除 return 以确保正确解析 Promise
 		},
 		complete: () => {
@@ -48,5 +53,8 @@ const handleRequest = (options, resolve, reject) => {
 		}
 	});
 };
+
+
+
 
 export default request;

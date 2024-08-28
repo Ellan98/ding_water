@@ -8,8 +8,8 @@ class EventSource {
     this.requestTask = null;
     this.connect();
   }
-  connect() {
-    this.requestTask = common_vendor.wx$1.request({
+  async connect() {
+    this.requestTask = await common_vendor.index.request({
       url: this.url,
       enableChunked: true,
       responseType: "text",
@@ -26,17 +26,19 @@ class EventSource {
       fail: () => {
       }
     });
+    this.requestTask.onChunkReceived((res) => {
+      console.log("监听流式输出", res);
+      const uint8Array = new Uint8Array(res.data);
+      let text = String.fromCharCode.apply(null, uint8Array);
+      text = decodeURIComponent(escape(text));
+      console.log("监听流式输出text", text);
+      this.handleChunk(text);
+    });
     this.requestTask.onHeadersReceived((res) => {
       this.emit("open", res);
     });
-    this.requestTask.onChunkReceived((res) => this.handleChunk(res));
   }
-  handleChunk(res) {
-    const arrayBuffer = res.data;
-    const uint8Array = new Uint8Array(arrayBuffer);
-    let data = common_vendor.index.arrayBufferToBase64(uint8Array);
-    data = new Buffer(data, "base64");
-    data = data.toString("utf8");
+  handleChunk(data) {
     const lines = data.split("\n\n");
     lines.forEach((line) => {
       if (!line.trim()) {
@@ -68,6 +70,7 @@ class EventSource {
     if (this.listeners[event]) {
       this.listeners[event].forEach((callback) => {
         callback(data);
+        console.log("event", event, data);
       });
     }
   }

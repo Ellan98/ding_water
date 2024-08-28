@@ -1,5 +1,12 @@
 <template>
 	<view class="container">
+		<view>
+			<!-- 提示信息弹窗 -->
+			<uni-popup ref="tips" type="message">
+				<uni-popup-message :type="tipsType" :message="tipsText" :duration="2000"></uni-popup-message>
+			</uni-popup>
+		</view>
+
 		<view class="title">
 			仅作演示
 		</view>
@@ -46,10 +53,10 @@
 	import {
 		useAuthStore
 	} from '/pinia'
-	
-	import {login} from "@/api/login"
-	
-	
+
+
+
+
 
 	const authStore = useAuthStore()
 	// 登录表单
@@ -69,36 +76,41 @@
 					required: true,
 					errorMessage: '请输入账号',
 				},
-				
+
 			],
-			},
-			password: {
-				// name 字段的校验规则
-				rules: [
-					// 校验 name 不能为空
-					{
-						required: true,
-						errorMessage: '请输入密码',
-					},
-					
+		},
+		password: {
+			// name 字段的校验规则
+			rules: [
+				// 校验 name 不能为空
+				{
+					required: true,
+					errorMessage: '请输入密码',
+				},
 				],
-				}
+		}
 	}
 
-let form = ref(null)
-
+	let form = ref(null)
+	let tips = ref(null)
+	let tipsText = ref("")
+	let tipsType = ref("success")
 	const submit = () => {
-		
-			form.value.validate().then( async(res) => {
-				await login(res)
-			console.log("data",res)
-			}).catch(err => {
-				console.log('err', err);
-			})
-		}
-		
-		
-		
+		form.value.validate().then(async (res) => {
+			const isLoading = await authStore.setAuthProfile(res)
+			if (isLoading) {
+				tipsText.value = "登陆成功"
+				tipsType.value = "success"
+				uni.switchTab({
+					url: "/pages/home/index"
+				})
+			} else {
+				tipsText.value = "登陆失败"
+				tipsType.value = "error"
+			}
+			tips.value.open()
+		})
+	}
 </script>
 
 <style scoped>

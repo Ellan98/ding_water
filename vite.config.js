@@ -3,7 +3,7 @@ import {
 } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
 
-				// target: 'https://ellan.online/api/v2',
+// target: 'https://ellan.online/api/v2',
 import {
 	fileURLToPath,
 	URL
@@ -17,7 +17,7 @@ export default defineConfig({
 		port: 5173,
 		proxy: {
 			'/api-dev': {
-				target:'http://127.0.0.1:3030/api/v2',
+				target: 'http://127.0.0.1:3030/api/v2',
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api-dev/, ''), // 此处进行路径重写
 			}
@@ -28,4 +28,6 @@ export default defineConfig({
 			'@': './' // 这里配置根目录的别名+
 		},
 	},
+
+	
 });

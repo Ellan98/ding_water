@@ -11,23 +11,24 @@ const handleRequest = (options, resolve, reject) => {
     title: "加载中..."
   });
   common_vendor.index.request({
-    // url: BASEURL + ':' + options.port + options.url,
     url: `${BASEURL}${options.url}`,
     method: options.method,
     data: options.data,
     success: (response) => {
       if (response.statusCode == 401) {
-        common_vendor.index.showToast({
-          icon: "error",
-          position: "top",
-          title: "请尝试登录"
+        common_vendor.index.showLoading({
+          title: "即将跳转到登录页面",
+          success: () => {
+            common_vendor.index.switchTab({
+              url: "/pages/home/index"
+            });
+          }
         });
         return;
       }
-      resolve(response);
+      resolve(response.data);
     },
     fail: (err) => {
-      console.log("error", err);
       reject(err);
     },
     complete: () => {

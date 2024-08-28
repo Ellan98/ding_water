@@ -60,6 +60,13 @@
       }
     ]
   },
-  "preloadRule": {},
+  "preloadRule": {
+    "pages/task/index": {
+      "network": "all",
+      "packages": [
+        "pagesPackage/taskPage"
+      ]
+    }
+  },
   "usingComponents": {}
 }

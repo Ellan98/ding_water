@@ -3,7 +3,6 @@ import request from "/utils/request"
 
 export function login (data) {
 return 	request({
-		port:3030,
 		url:"/auth/login",
 		method:'post',
 		data

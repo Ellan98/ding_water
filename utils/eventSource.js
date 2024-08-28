@@ -7,8 +7,8 @@ class EventSource {
 		this.connect()
 	}
 
-	connect() {
-		this.requestTask = wx.request({
+	async connect() {
+		this.requestTask = await uni.request({
 			url: this.url,
 			enableChunked: true,
 			responseType: 'text',
@@ -24,18 +24,27 @@ class EventSource {
 			},
 			fail: () => {}
 		});
+		// 监听流式输出
+		this.requestTask.onChunkReceived((res) => {
+			console.log("监听流式输出", res);
+			const uint8Array = new Uint8Array(res.data);
+			let text = String.fromCharCode.apply(null, uint8Array);
+			text = decodeURIComponent(escape(text));
+			console.log("监听流式输出text",  text);
+			// const json = JSON.parse(text);
+			this.handleChunk(text)
+
+
+		})
+
 		this.requestTask.onHeadersReceived(res => {
 			this.emit('open', res);
 		})
-		this.requestTask.onChunkReceived(res => this.handleChunk(res))
 	}
 
-	handleChunk(res) {
-		const arrayBuffer = res.data;
-		const uint8Array = new Uint8Array(arrayBuffer);
-		let data = uni.arrayBufferToBase64(uint8Array)
-		data = new Buffer(data, 'base64')
-		data = data.toString('utf8')
+	handleChunk(data) {
+
+		// data = data.toString('utf8')
 		const lines = data.split("\n\n")
 		// console.log('data', data, lines)
 		lines.forEach(line => {
@@ -70,6 +79,7 @@ class EventSource {
 		if (this.listeners[event]) {
 			this.listeners[event].forEach(callback => {
 				callback(data)
+				console.log("event", event, data)
 			});
 		}
 	}

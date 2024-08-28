@@ -4,7 +4,6 @@
   "usingComponents": {
     "uni-list-item": "../../../uni_modules/uni-list/components/uni-list-item/uni-list-item",
     "uni-transition": "../../../uni_modules/uni-transition/components/uni-transition/uni-transition",
-    "uni-section": "../../../uni_modules/uni-section/components/uni-section/uni-section",
-    "uni-icons": "../../../uni_modules/uni-icons/components/uni-icons/uni-icons"
+    "uni-section": "../../../uni_modules/uni-section/components/uni-section/uni-section"
   }
 }

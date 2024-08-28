@@ -33,29 +33,31 @@ if (!Array) {
   const _easycom_uni_list2 = common_vendor.resolveComponent("uni-list");
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
-  (_easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2)();
+  const _easycom_uni_popup_message2 = common_vendor.resolveComponent("uni-popup-message");
+  (_easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2 + _easycom_uni_popup_message2)();
 }
 const _easycom_uni_list_item = () => "../../uni_modules/uni-list/components/uni-list-item/uni-list-item.js";
 const _easycom_uni_list = () => "../../uni_modules/uni-list/components/uni-list/uni-list.js";
 const _easycom_uni_section = () => "../../uni_modules/uni-section/components/uni-section/uni-section.js";
 const _easycom_uni_popup = () => "../../uni_modules/uni-popup/components/uni-popup/uni-popup.js";
+const _easycom_uni_popup_message = () => "../../uni_modules/uni-popup/components/uni-popup-message/uni-popup-message.js";
 if (!Math) {
-  (_easycom_uni_list_item + _easycom_uni_list + _easycom_uni_section + _easycom_uni_popup)();
+  (_easycom_uni_list_item + _easycom_uni_list + _easycom_uni_section + _easycom_uni_popup + _easycom_uni_popup_message)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_assets._imports_0,
     b: common_vendor.o(($event) => $options.selectLogin()),
-    c: common_vendor.p({
+    c: common_vendor.o(($event) => _ctx.$refs.tips.open()),
+    d: common_vendor.p({
       title: "微信登录",
       showArrow: true,
       thumb: "/static/icon/wechat.png",
       ["thumb-size"]: "lg",
-      link: "switchTab",
-      to: "/pages/home/index"
+      link: "switchTab"
     }),
-    d: common_vendor.o(_ctx.accountLogin),
-    e: common_vendor.p({
+    e: common_vendor.o(_ctx.accountLogin),
+    f: common_vendor.p({
       title: "账户密码登录",
       showArrow: true,
       thumb: "/static/icon/plane.png",
@@ -63,18 +65,27 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       link: "navigateTo",
       to: "/pagesPackage/loginPage/account/account"
     }),
-    f: common_vendor.p({
+    g: common_vendor.p({
       border: true,
       clickable: true
     }),
-    g: common_vendor.p({
+    h: common_vendor.p({
       title: "登录方式",
       type: "line"
     }),
-    h: common_vendor.sr("popup", "d08ef7d4-0"),
-    i: common_vendor.p({
+    i: common_vendor.sr("popup", "d08ef7d4-0"),
+    j: common_vendor.p({
       ["background-color"]: "#fff",
       ["border-radius"]: "20px 20px 0 0"
+    }),
+    k: common_vendor.p({
+      type: "error",
+      message: "请使用账号密码登录",
+      duration: 2e3
+    }),
+    l: common_vendor.sr("tips", "d08ef7d4-5"),
+    m: common_vendor.p({
+      type: "message"
     })
   };
 }
