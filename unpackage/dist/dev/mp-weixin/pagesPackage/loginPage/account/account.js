@@ -55,14 +55,15 @@ const _sfc_main = {
     let tipsType = common_vendor.ref("success");
     const submit = () => {
       form.value.validate().then(async (res) => {
+        tipsText.value = "登陆中......";
+        tipsType.value = "info";
         const isLoading = await authStore.setAuthProfile(res);
         if (isLoading) {
-          tipsText.value = "登陆成功";
-          tipsType.value = "success";
           common_vendor.index.switchTab({
             url: "/pages/home/index"
           });
         } else {
+          tips.value.close();
           tipsText.value = "登陆失败";
           tipsType.value = "error";
         }
@@ -82,7 +83,7 @@ const _sfc_main = {
         c: common_vendor.p({
           type: "message"
         }),
-        d: common_assets._imports_0$2,
+        d: common_assets._imports_0$1,
         e: common_vendor.o(($event) => loginForm.account = $event),
         f: common_vendor.p({
           placeholder: "请输入账号",

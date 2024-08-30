@@ -46,6 +46,21 @@
 
 	/* 弹出框样式 */
 .popup-content.data-v-d08ef7d4 {
-		height: 400rpx;
+		height: 350rpx;
 		padding: 20rpx;
+}
+
+	/* 获取头像样式 */
+.userAvatar.data-v-d08ef7d4 {
+		background-color: #fff;
+		border: 1px solid #fff;
+		font-size: 28rpx;
+}
+
+	/* 获取用户昵称 */
+.user-nick-name.data-v-d08ef7d4 {
+		margin: 0 10rpx;
+}
+.list-item-container.data-v-d08ef7d4 {
+		border: 1px solid red;
 }

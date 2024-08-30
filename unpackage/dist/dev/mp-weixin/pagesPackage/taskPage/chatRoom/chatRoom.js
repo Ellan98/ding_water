@@ -23,6 +23,8 @@ const _sfc_main = {
     let keyBoardZoneExtendHeight = common_vendor.ref(0);
     let holdKeyboard = common_vendor.ref(false);
     const linechange = (e) => {
+      if (e.detail.height < 20)
+        return keyBoardZoneExtendHeight.value = 0;
       keyBoardZoneExtendHeight.value = e.detail.height;
       console.log("当前高度", e.detail.height);
     };
@@ -68,7 +70,7 @@ const _sfc_main = {
         content: questions.value
       });
       let fullText = "";
-      const eventSource = new utils_eventSource.EventSource(`${BASEURL}/spark/conversation?content=${questions.value.trim()}`);
+      const eventSource = new utils_eventSource.EventSource(`${BASEURL}/spark/conversation?content=${questions.value}`);
       list.value.push({
         id: index.value,
         date: utils_date.date(),
@@ -78,6 +80,7 @@ const _sfc_main = {
         fullText
       });
       eventSource.addEventListener("message", async (e) => {
+        console.log("-------------eeeeeeeee", e);
         fullText += JSON.parse(e.data)["choices"][0]["delta"]["content"];
         if (JSON.parse(e.data)["usage"]) {
           list.value[list.value.length - 1].fullText = fullText;
@@ -97,17 +100,17 @@ const _sfc_main = {
           return common_vendor.e({
             a: msg.type == "other"
           }, msg.type == "other" ? {
-            b: common_assets._imports_0$3
+            b: common_assets._imports_0$2
           } : {}, {
             c: msg.loading
           }, msg.loading ? {} : {
-            d: common_vendor.t(msg.content)
-          }, {
+            d: common_vendor.t(msg.content),
             e: common_vendor.s(msg.type == "myself" ? {
               float: "right"
             } : {
               float: "left"
-            }),
+            })
+          }, {
             f: msg.type == "myself"
           }, msg.type == "myself" ? {
             g: common_assets._imports_1
@@ -143,7 +146,7 @@ const _sfc_main = {
         p: common_vendor.o(($event) => common_vendor.isRef(questions) ? questions.value = $event.detail.value : questions = $event.detail.value),
         q: common_vendor.o(questionsSparkModel),
         r: common_vendor.unref(disabled),
-        s: 50 + common_vendor.unref(keyBoardZoneExtendHeight) + "px"
+        s: 60 + common_vendor.unref(keyBoardZoneExtendHeight) + "px"
       };
     };
   }

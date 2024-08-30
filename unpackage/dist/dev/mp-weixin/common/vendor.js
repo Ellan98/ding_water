@@ -8561,6 +8561,21 @@ This will fail in production.`);
   useStore.$id = id;
   return useStore;
 }
+function mapState(useStore, keysOrMapper) {
+  return Array.isArray(keysOrMapper) ? keysOrMapper.reduce((reduced, key) => {
+    reduced[key] = function() {
+      return useStore(this.$pinia)[key];
+    };
+    return reduced;
+  }, {}) : Object.keys(keysOrMapper).reduce((reduced, key) => {
+    reduced[key] = function() {
+      const store = useStore(this.$pinia);
+      const storeKey = keysOrMapper[key];
+      return typeof storeKey === "function" ? storeKey.call(this, store) : store[storeKey];
+    };
+    return reduced;
+  }, {});
+}
 exports._export_sfc = _export_sfc;
 exports.createPinia = createPinia;
 exports.createSSRApp = createSSRApp;
@@ -8570,6 +8585,7 @@ exports.f = f;
 exports.index = index;
 exports.initVueI18n = initVueI18n;
 exports.isRef = isRef;
+exports.mapState = mapState;
 exports.n = n;
 exports.nextTick$1 = nextTick$1;
 exports.o = o;

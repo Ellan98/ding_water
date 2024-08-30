@@ -4,7 +4,12 @@ const common_assets = require("../../common/assets.js");
 const LabelTitle = () => "./components/label-title/label-title.js";
 const _sfc_main = {
   data() {
-    return {};
+    return {
+      userProfileInfo: {
+        avatar: "",
+        nickName: ""
+      }
+    };
   },
   onLoad() {
   },
@@ -25,16 +30,32 @@ const _sfc_main = {
   methods: {
     selectLogin() {
       this.$refs.popup.open("bottom");
+    },
+    // 获取用户头像
+    getUserAvatar(res) {
+      console.log("用户头像信息", res);
+    },
+    // 微信登录
+    wechatLogin() {
+      this.$refs.popup.close();
+      common_vendor.index.login({
+        provider: "weixin",
+        //使用微信登录
+        success: function(loginRes) {
+          console.log("11", loginRes);
+        }
+      });
     }
   }
 };
 if (!Array) {
+  const _component_LabelTitle = common_vendor.resolveComponent("LabelTitle");
   const _easycom_uni_list_item2 = common_vendor.resolveComponent("uni-list-item");
   const _easycom_uni_list2 = common_vendor.resolveComponent("uni-list");
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
   const _easycom_uni_popup_message2 = common_vendor.resolveComponent("uni-popup-message");
-  (_easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2 + _easycom_uni_popup_message2)();
+  (_component_LabelTitle + _easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2 + _easycom_uni_popup_message2)();
 }
 const _easycom_uni_list_item = () => "../../uni_modules/uni-list/components/uni-list-item/uni-list-item.js";
 const _easycom_uni_list = () => "../../uni_modules/uni-list/components/uni-list/uni-list.js";
@@ -48,7 +69,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_assets._imports_0,
     b: common_vendor.o(($event) => $options.selectLogin()),
-    c: common_vendor.o(($event) => _ctx.$refs.tips.open()),
+    c: common_vendor.o($options.wechatLogin),
     d: common_vendor.p({
       title: "微信登录",
       showArrow: true,
@@ -56,8 +77,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ["thumb-size"]: "lg",
       link: "switchTab"
     }),
-    e: common_vendor.o(_ctx.accountLogin),
-    f: common_vendor.p({
+    e: common_vendor.p({
       title: "账户密码登录",
       showArrow: true,
       thumb: "/static/icon/plane.png",
@@ -65,26 +85,40 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       link: "navigateTo",
       to: "/pagesPackage/loginPage/account/account"
     }),
-    g: common_vendor.p({
+    f: common_vendor.p({
       border: true,
       clickable: true
     }),
-    h: common_vendor.p({
+    g: common_vendor.p({
       title: "登录方式",
       type: "line"
     }),
-    i: common_vendor.sr("popup", "d08ef7d4-0"),
-    j: common_vendor.p({
+    h: common_vendor.sr("popup", "d08ef7d4-1"),
+    i: common_vendor.p({
       ["background-color"]: "#fff",
-      ["border-radius"]: "20px 20px 0 0"
+      ["border-radius"]: "10px 10px 0 0"
     }),
-    k: common_vendor.p({
+    j: common_vendor.o((...args) => $options.getUserAvatar && $options.getUserAvatar(...args)),
+    k: $data.userProfileInfo.nickName,
+    l: common_vendor.p({
+      border: true,
+      clickable: true
+    }),
+    m: common_vendor.p({
+      title: "用户信息",
+      type: "line"
+    }),
+    n: common_vendor.sr("wechatProfilePopup", "d08ef7d4-6"),
+    o: common_vendor.p({
+      ["background-color"]: "#fff"
+    }),
+    p: common_vendor.p({
       type: "error",
       message: "请使用账号密码登录",
       duration: 2e3
     }),
-    l: common_vendor.sr("tips", "d08ef7d4-5"),
-    m: common_vendor.p({
+    q: common_vendor.sr("tips", "d08ef7d4-12"),
+    r: common_vendor.p({
       type: "message"
     })
   };

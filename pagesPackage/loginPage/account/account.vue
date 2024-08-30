@@ -97,14 +97,16 @@
 	let tipsType = ref("success")
 	const submit = () => {
 		form.value.validate().then(async (res) => {
+			tipsText.value = "登陆中......"
+			tipsType.value = "info"
 			const isLoading = await authStore.setAuthProfile(res)
 			if (isLoading) {
-				tipsText.value = "登陆成功"
-				tipsType.value = "success"
+			
 				uni.switchTab({
 					url: "/pages/home/index"
 				})
 			} else {
+				tips.value.close()
 				tipsText.value = "登陆失败"
 				tipsType.value = "error"
 			}

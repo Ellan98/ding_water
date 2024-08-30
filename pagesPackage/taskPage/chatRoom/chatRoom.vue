@@ -16,17 +16,16 @@
 						</template>
 						<template v-slot:body>
 							<view class="list-item-container-body">
+								<view class="load-content" v-if="msg.loading">
+									<text></text>
+									<text></text>
+									<text></text>
+									<text></text>
+								</view>
 								<view class="content-Container"
-									:style="msg.type == 'myself'? {float:'right'} : {float:'left'} ">
-									<view class="load-content" v-if="msg.loading">
-										<text></text>
-										<text></text>
-										<text></text>
-										<text></text>
-									</view>
-									<view v-else>
-										{{msg.content}}
-									</view>
+									:style="msg.type == 'myself'? {float:'right'} : {float:'left'} " v-else>
+
+									{{msg.content}}
 
 								</view>
 							</view>
@@ -45,7 +44,7 @@
 
 
 
-	<view class="keyBoardZone" :style="{ height: 50 + keyBoardZoneExtendHeight + 'px'}">
+	<view class="keyBoardZone" :style="{ height: 60 + keyBoardZoneExtendHeight + 'px'}">
 		<view>
 			<image src="/static/animal/duck.png" class="image-increase" />
 		</view>
@@ -100,6 +99,7 @@
 		// 解决view层不同步的问题
 		this.scrollTop = this.old.scrollTop
 		this.$nextTick(function() {
+			0
 			this.scrollTop = 0
 		});
 		uni.showToast({
@@ -110,6 +110,7 @@
 
 	// 监听换行事件
 	const linechange = (e) => {
+		if (e.detail.height < 20) return keyBoardZoneExtendHeight.value = 0;
 		keyBoardZoneExtendHeight.value = e.detail.height
 		console.log("当前高度", e.detail.height)
 	}
@@ -135,7 +136,6 @@
 		if (list.value.length === 0) return;
 		list.value[list.value.length - 1].loading = false;
 		let currentMessage = '';
-		// list.value[list.value.length - 1].loading = false
 		const intervalId = setInterval(() => {
 			if (index < list.value[list.value.length - 1].fullText.length) {
 				currentMessage += list.value[list.value.length - 1].fullText[index];
@@ -186,7 +186,7 @@
 		})
 		// 消息 容器
 		let fullText = ""
-		const eventSource = new EventSource(`${BASEURL}/spark/conversation?content=${questions.value.trim()}`);
+		const eventSource = new EventSource(`${BASEURL}/spark/conversation?content=${questions.value}`);
 
 		list.value.push({
 			id: index.value,
@@ -217,6 +217,7 @@
 		//微信小程序端
 		/*#ifdef MP*/
 		eventSource.addEventListener('message', async (e) => {
+			console.log('-------------eeeeeeeee',e)
 			fullText += JSON.parse(e.data)["choices"][0]["delta"]["content"]
 			if (JSON.parse(e.data)["usage"]) {
 				list.value[list.value.length - 1].fullText = fullText
@@ -290,6 +291,7 @@
 		background-color: #ebedef;
 		bottom: 40rpx;
 		border-radius: 10rpx;
+		height: 60rpx;
 		left: 50%;
 		/* 强制在任何字符之间进行断行 */
 		overflow-wrap: break-word;
@@ -297,6 +299,7 @@
 		position: absolute;
 		text-wrap: wrap;
 		transform: translateX(-50%);
+		transition: height 0.5s ease-in-out, transform 0.5s ease-in-out;
 		word-wrap: break-word;
 		/* 允许单词在容器边界处换行 */
 		word-break: break-all;
@@ -341,15 +344,15 @@
 		/* 类似于 word-wrap，旧名称 */
 	}
 
-
-	/* From Uiverse.io by terenceodonoghue */
+	/* load 文字效果 */
 	.load-content {
-		border-radius: 50%;
-		height: 48rpx;
-		width: 48rpx;
 		animation: rotate_3922 1.2s linear infinite;
 		background-color: #9b59b6;
 		background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+		border-radius: 50%;
+		height: 48rpx;
+		margin-left: 20rpx;
+		width: 48rpx;
 	}
 
 	.load-content text {

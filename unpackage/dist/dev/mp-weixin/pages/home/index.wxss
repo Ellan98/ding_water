@@ -1,4 +1,7 @@
 
+.container.data-v-4978fed5 {
+		padding: 0 10rpx;
+}
 .calendar-button.data-v-4978fed5 {
 		flex: 1;
 		font-weight: bold;

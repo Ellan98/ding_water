@@ -1,12 +1,10 @@
 "use strict";
 const utils_request = require("../../utils/request.js");
-function getTaskList() {
+function getTaskList(data) {
   return utils_request.request({
     url: "/task/list",
     method: "get",
-    data: {
-      userId: "525942275105096080"
-    }
+    data
   });
 }
 exports.getTaskList = getTaskList;

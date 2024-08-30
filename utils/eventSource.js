@@ -5,16 +5,19 @@ class EventSource {
 		this.listeners = {};
 		this.requestTask = null
 		this.connect()
+		
 	}
 
-	async connect() {
+	 connect = async () => {
 		this.requestTask = await uni.request({
 			url: this.url,
 			enableChunked: true,
-			responseType: 'text',
+			enableCache: true,
+			responseType: 'text/html',
 			method: 'GET',
 			timeout: 300e3,
 			success: res => {
+				console.log("success",res)
 				this.emit('success', res)
 				if (this.retryTime > 0) {
 					setTimeout(() => {
@@ -30,7 +33,7 @@ class EventSource {
 			const uint8Array = new Uint8Array(res.data);
 			let text = String.fromCharCode.apply(null, uint8Array);
 			text = decodeURIComponent(escape(text));
-			console.log("监听流式输出text",  text);
+			console.log("监听流式输出text", text);
 			// const json = JSON.parse(text);
 			this.handleChunk(text)
 

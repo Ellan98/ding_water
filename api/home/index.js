@@ -1,12 +1,10 @@
 import request from "/utils/request"
 
 
-export function getTaskList() {
+export function getTaskList(data) {
 	return request({
 		url:"/task/list",
 		method:"get",
-		data:{
-			userId:"525942275105096080"
-		}
+		data
 	})
 }
