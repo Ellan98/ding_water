@@ -1,0 +1,28 @@
+
+.visual-container.data-v-622968a8 {
+		border-radius: 10rpx;
+		background-image: linear-gradient(to bottom,
+				rgba(244, 247, 252),
+				rgba(230, 250, 241));
+		height: 100%;
+}
+.main.data-v-622968a8 {
+		height: 100%;
+		padding: 0 20rpx;
+}
+.branch-container.data-v-622968a8 {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 40rpx;
+		width: 100%;
+}
+.branch-container.data-v-622968a8:nth-child(1) {
+		font-size: 32rpx;
+}
+.segmented-container.data-v-622968a8 {
+		width: 320rpx;
+}
+.canvas-container.data-v-622968a8 {
+		border: 1px solid red;
+}

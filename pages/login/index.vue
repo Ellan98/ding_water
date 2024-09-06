@@ -2,7 +2,7 @@
 	<view class="container">
 
 		<view class="title">
-			<LabelTitle />
+			<!-- <LabelTitle /> -->
 		</view>
 		<!-- logo 显示 -->
 		<view class="logo-container">

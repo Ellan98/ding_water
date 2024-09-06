@@ -1,9 +1,7 @@
 {
   "usingComponents": {
-    "uni-calendar": "../../uni_modules/uni-calendar/components/uni-calendar/uni-calendar",
-    "uni-list-item": "../../uni_modules/uni-list/components/uni-list-item/uni-list-item",
-    "uni-swipe-action-item": "../../uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item",
-    "uni-swipe-action": "../../uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action",
-    "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section"
+    "calendar-container": "./components/calendarContainer",
+    "task-list": "./components/taskList",
+    "visual-zone": "./components/visualZone"
   }
 }

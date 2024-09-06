@@ -1,0 +1,65 @@
+
+.scrollViewContainer.data-v-5adfde9c {
+		transition: height 0.5s ease-in-out, transform 0.5s ease-in-out;
+		width: 99%;
+}
+
+	/* ================== begin input style ==================*/
+.keyBoardZone.data-v-5adfde9c {
+		background-color: #f4f7fc;
+		border-top: 1px solid aliceblue;
+		position: relative;
+		transition: height 0.5s ease-in-out, transform 0.5s ease-in-out;
+		width: 99%;
+}
+.keyBoardZone image.data-v-5adfde9c {
+		height: 60rpx;
+		position: absolute;
+		bottom: 40rpx;
+		width: 60rpx;
+}
+.keyBoardZone .image-increase.data-v-5adfde9c {
+		left: 20rpx;
+}
+.keyBoardZone .image-more.data-v-5adfde9c {
+		left: 100rpx;
+}
+
+
+
+
+	/* 消息发送按钮样式 */
+.keyBoardZone .content-button.data-v-5adfde9c {
+		bottom: 40rpx;
+		font-size: 28rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+		position: absolute;
+		text-align: center;
+		text-wrap: nowrap;
+		right: 20rpx;
+		width: 120rpx;
+}
+
+
+	/* 输入框样式 */
+.keyBoardZone .textarea-container.data-v-5adfde9c {
+		background-color: #ebedef;
+		bottom: 40rpx;
+		left: 50%;
+		height: 60rpx;
+		/* 强制在任何字符之间进行断行 */
+		overflow-wrap: break-word;
+		padding: 10rpx;
+		position: absolute;
+		text-wrap: wrap;
+		transform: translateX(-50%);
+		word-wrap: break-word;
+		/* 允许单词在容器边界处换行 */
+		word-break: break-all;
+		/* 类似于 word-wrap，旧名称 */
+		width: 50%;
+}
+
+
+	/* ================== end input style ==================*/

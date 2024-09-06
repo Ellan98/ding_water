@@ -8,8 +8,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "",
-          "pathName": "pages/login/index",
+          "name": "pages/home/index",
+          "pathName": "pages/home/index",
           "query": "",
           "launchMode": "default",
           "scene": null

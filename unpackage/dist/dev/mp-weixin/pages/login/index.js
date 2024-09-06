@@ -49,13 +49,12 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _component_LabelTitle = common_vendor.resolveComponent("LabelTitle");
   const _easycom_uni_list_item2 = common_vendor.resolveComponent("uni-list-item");
   const _easycom_uni_list2 = common_vendor.resolveComponent("uni-list");
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
   const _easycom_uni_popup_message2 = common_vendor.resolveComponent("uni-popup-message");
-  (_component_LabelTitle + _easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2 + _easycom_uni_popup_message2)();
+  (_easycom_uni_list_item2 + _easycom_uni_list2 + _easycom_uni_section2 + _easycom_uni_popup2 + _easycom_uni_popup_message2)();
 }
 const _easycom_uni_list_item = () => "../../uni_modules/uni-list/components/uni-list-item/uni-list-item.js";
 const _easycom_uni_list = () => "../../uni_modules/uni-list/components/uni-list/uni-list.js";
@@ -93,7 +92,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "登录方式",
       type: "line"
     }),
-    h: common_vendor.sr("popup", "d08ef7d4-1"),
+    h: common_vendor.sr("popup", "d08ef7d4-0"),
     i: common_vendor.p({
       ["background-color"]: "#fff",
       ["border-radius"]: "10px 10px 0 0"
@@ -108,7 +107,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "用户信息",
       type: "line"
     }),
-    n: common_vendor.sr("wechatProfilePopup", "d08ef7d4-6"),
+    n: common_vendor.sr("wechatProfilePopup", "d08ef7d4-5"),
     o: common_vendor.p({
       ["background-color"]: "#fff"
     }),
@@ -117,7 +116,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       message: "请使用账号密码登录",
       duration: 2e3
     }),
-    q: common_vendor.sr("tips", "d08ef7d4-12"),
+    q: common_vendor.sr("tips", "d08ef7d4-11"),
     r: common_vendor.p({
       type: "message"
     })
