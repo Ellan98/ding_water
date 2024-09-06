@@ -1,6 +1,5 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
-const utils_Echarts = require("../../../utils/Echarts.js");
 if (!Array) {
   const _easycom_uni_segmented_control2 = common_vendor.resolveComponent("uni-segmented-control");
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
@@ -33,13 +32,8 @@ const _sfc_main = {
           }, 500);
           const systemInfo = common_vendor.index.getSystemInfoSync();
           const pixelRatio = systemInfo.pixelRatio;
-          const width = barStyle[0].width * pixelRatio;
-          const height = barStyle[0].height * pixelRatio;
-          let charts = new utils_Echarts.Echarts(barStyle[0].node, null, {
-            width,
-            height
-          });
-          charts.testCharts();
+          barStyle[0].width * pixelRatio;
+          barStyle[0].height * pixelRatio;
         });
       });
     };

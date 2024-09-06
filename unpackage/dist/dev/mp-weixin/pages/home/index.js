@@ -47,9 +47,9 @@ const _sfc_main = {
 };
 if (!Array) {
   const _component_CalendarContainer = common_vendor.resolveComponent("CalendarContainer");
-  const _component_TaskList = common_vendor.resolveComponent("TaskList");
   const _component_VisualZone = common_vendor.resolveComponent("VisualZone");
-  (_component_CalendarContainer + _component_TaskList + _component_VisualZone)();
+  const _component_TaskList = common_vendor.resolveComponent("TaskList");
+  (_component_CalendarContainer + _component_VisualZone + _component_TaskList)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};

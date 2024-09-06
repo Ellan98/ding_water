@@ -2,10 +2,11 @@
 	<view class="container">
 
 		<CalendarContainer />
+		
+		<VisualZone />
 		<!-- 列表 容器 -->
 		<TaskList />
 		
-		<VisualZone />
 	</view>
 </template>
 <script>
