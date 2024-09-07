@@ -2,13 +2,11 @@
 const common_vendor = require("../../../common/vendor.js");
 if (!Array) {
   const _easycom_uni_segmented_control2 = common_vendor.resolveComponent("uni-segmented-control");
-  const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
-  (_easycom_uni_segmented_control2 + _easycom_uni_section2)();
+  _easycom_uni_segmented_control2();
 }
 const _easycom_uni_segmented_control = () => "../../../uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control.js";
-const _easycom_uni_section = () => "../../../uni_modules/uni-section/components/uni-section/uni-section.js";
 if (!Math) {
-  (_easycom_uni_segmented_control + _easycom_uni_section)();
+  _easycom_uni_segmented_control();
 }
 const _sfc_main = {
   __name: "visualZone",
@@ -48,10 +46,6 @@ const _sfc_main = {
           ["style-type"]: "button",
           ["active-color"]: "#01cc70",
           inActiveColor: "#f1f5f8"
-        }),
-        b: common_vendor.p({
-          title: "可视化",
-          type: "line"
         })
       };
     };

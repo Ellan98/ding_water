@@ -1,7 +1,8 @@
 <template>
 	<view class="visual-container">
 
-		<uni-section title="可视化" type="line">
+		<!-- <uni-section title="可视化" type="line">
+		</uni-section> -->
 			<view class="main">
 				<view class="branch-container">
 					<view>今日报告</view>
@@ -17,14 +18,12 @@
 					</view>
 				</view>
 				<view class="branch-container" id="barChartContainer">
-					<!--  style="width: 300px; height: 200px;" canvas-id="barChart" -->
 					<canvas class="canvas-container" canvas-id="barChart" id="barChart"
 						:style="{width:'100%'}"></canvas>
 				</view>
 
 			</view>
-
-		</uni-section>
+ 
 	</view>
 </template>
 
@@ -88,15 +87,17 @@
 <style scoped>
 	.visual-container {
 		border-radius: 10rpx;
-		background-image: linear-gradient(to bottom,
-				rgba(244, 247, 252),
-				rgba(230, 250, 241));
+		border:1px solid #f4f7fc;
+		background-image: linear-gradient(to bottom,rgba(244, 247, 252),rgba(230, 250, 241));
 		height: 100%;
+		padding: 20rpx 0rpx;
+		width:100%;
 	}
 
 	.main {
 		height: 100%;
-		padding: 0 20rpx;
+		margin:0 auto;
+		width: 95%;
 	}
 
 	.branch-container {
@@ -104,7 +105,6 @@
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 40rpx;
-		width: 100%;
 	}
 
 	.branch-container:nth-child(1) {
@@ -112,10 +112,9 @@
 	}
 
 	.segmented-container {
-		width: 320rpx;
+		width: 280rpx;
 	}
 
 	.canvas-container {
-		border: 1px solid red;
 	}
 </style>

@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "uni-segmented-control": "../../../uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control",
-    "uni-section": "../../../uni_modules/uni-section/components/uni-section/uni-section"
+    "uni-segmented-control": "../../../uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control"
   }
 }
