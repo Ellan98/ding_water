@@ -16,9 +16,6 @@ const useAuthStore = common_vendor.defineStore("auth", {
   getters: {},
   actions: {
     async setAuthProfile(info) {
-      common_vendor.index.showLoading({
-        title: "登录中"
-      });
       try {
         let respData = (await api_login.login(info)).data;
         this.userName = respData.name;
@@ -29,12 +26,9 @@ const useAuthStore = common_vendor.defineStore("auth", {
         this.phone = respData.phone;
         this.token = respData.token;
         this.userId = respData.userId;
-        utils_storage.setLocalStorage("token", this.token);
+        utils_storage.setLocalStorage("token", respData);
         return true;
       } catch (error) {
-        common_vendor.index.showToast({
-          title: "失败"
-        });
         console.error("Error during login:", error);
         return false;
       }

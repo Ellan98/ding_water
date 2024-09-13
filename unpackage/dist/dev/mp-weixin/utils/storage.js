@@ -6,4 +6,8 @@ function setLocalStorage(key, data) {
     data
   });
 }
+function getLocalStorage(key) {
+  return common_vendor.index.getStorageSync(key);
+}
+exports.getLocalStorage = getLocalStorage;
 exports.setLocalStorage = setLocalStorage;

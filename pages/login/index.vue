@@ -41,40 +41,48 @@
 	<!-- 微信登录弹框 获取 用户信息 -->
 	<view>
 		<!-- 弹出登录 -->
-		<uni-popup ref="wechatProfilePopup" background-color="#fff">
-			<view class="popup-content">
-				<uni-section title="用户信息" type="line">
-					<uni-list :border="true" :clickable="true">
-						<!-- 获取头像 -->
-						<uni-list-item class="list-item-container">
-							<template v-slot:header>
-								头像
-							</template>
-							<template v-slot:body>
-								<button open-type="chooseAvatar" class="userAvatar"
-									@chooseavatar="getUserAvatar">授权头像</button>
-							</template>
-						</uni-list-item>
-						<!-- 获取昵称 -->
-						<uni-list-item class="list-item-container">
-							<template v-slot:header>
-								昵称
-							</template>
-							<template v-slot:body>
-								<input :clearable="false" type="nickname" class="user-nick-name"
-									:value="userProfileInfo.nickName" placeholder="请输入昵称" />
-							</template>
+		<uni-popup ref="wechatProfilePopup" background-color="#ededed" border-radius="6px 6px 0 0">
+			<view class="wechat-popup-content">
+				<view class="popup-item-content">
+					<image src="/static/login.png" class="wechat-login-logo-container" />
+					<view class="title-container">Mochiye 申请</view>
+				</view>
+				<view class="popup-item-content">
+					<view class="title-container">获取你的昵称、头像</view>
+				</view>
+				<view class="popup-item-content user-profile-container">
+					<view class="title-container">头像</view>
+					<view>
 
-						</uni-list-item>
-						<!-- 登录 -->
-						<uni-list-item class="list-item-container">
-							<button>登录</button>
-						</uni-list-item>
+						<button open-type="chooseAvatar" @chooseavatar="onChooseAvatar"
+							class="wechat-login-logo-container">
+							<image :src="userProfileInfo.avatar" class="obtain-user-avatar" mode="aspectFill" v-if="userProfileInfo.avatar != ''" />
+							<uni-icons type="camera-filled" size="40" style="background-color: #ededed;"v-else ></uni-icons>
+						</button>
+					</view>
 
-					</uni-list>
+					<!-- <image :src="userProfileInfo.avatar" class="user-avatar-container" />
+					<view class="title-container">
+						<view class="nickName-container"> {{userProfileInfo.nickName}} </view>
+						<view style="color:#767676;font-size: 24rpx;"> 微信个人信息 </view>
+					</view> -->
+				</view>
+				<view class="popup-item-content user-profile-container">
+
+					<view class="title-container">昵称</view>
+					<view><input type='nickname' name='nickname' :value='userProfileInfo.nickName'
+							placeholder="请输入昵称"></input> </view>
+					<!-- <image :src="userProfileInfo.avatar" class="user-avatar-container" />
+					<view class="title-container">
+						<view class="nickName-container"> {{userProfileInfo.nickName}} </view>
+						<view style="color:#767676;font-size: 24rpx;"> 微信个人信息 </view>
+					</view> -->
+				</view>
+				<view class="popup-item-content  authorize-container ">
+					<view><button>保存</button></view>
+				</view>
 
 
-				</uni-section>
 
 			</view>
 		</uni-popup>
@@ -98,7 +106,6 @@
 	import LabelTitle from "./components/label-title/label-title.vue"
 	export default {
 		data() {
-
 			return {
 				userProfileInfo: {
 					avatar: '',
@@ -117,6 +124,7 @@
 		},
 		created() {
 
+
 		},
 		components: {
 			LabelTitle
@@ -124,7 +132,9 @@
 		watch: {
 
 		},
-		mounted() {
+		async mounted() {
+			await this.$nextTick()
+
 
 		},
 		destroyed() {
@@ -141,19 +151,25 @@
 			},
 			// 微信登录
 			wechatLogin() {
-
-				// 关闭登录方式弹框
-				this.$refs.popup.close()
-				uni.login({
-					provider: 'weixin', //使用微信登录
-					success: function(loginRes) {
-						console.log("11",loginRes);
-					}
-				});
-
-
+					this.$refs.popup.close()
 				// 打开 微信获取用户信息 弹框
-				// this.$refs.wechatProfilePopup.open("bottom")
+				this.$refs.wechatProfilePopup.open("bottom")
+				//  uni.getUserProfile({
+				// 	desc: '获取用户信息',
+				// 	success: (res) => {
+				// 		console.log("用户头像信息", res)
+
+				// 		// 关闭登录方式弹框
+			
+				// 		this.userProfileInfo.avatar = res.userInfo.avatarUrl;
+				// 		this.userProfileInfo.nickName = res.userInfo.nickName;
+
+				// 		// 打开 微信获取用户信息 弹框
+				// 		this.$refs.wechatProfilePopup.open("bottom")
+				// 	}
+				// })
+
+
 
 				// uni.authorize({
 				// 	scope: 'scope.userInfo',
@@ -180,6 +196,9 @@
 
 
 			},
+			onChooseAvatar(e) {
+				this.userProfileInfo.avatar = e.detail.avatarUrl;
+			}
 
 		},
 	}
@@ -258,7 +277,76 @@
 		margin: 0 10rpx;
 	}
 
-	.list-item-container {
-		border: 1px solid red;
+	/* 微信获取用户信息 样式 */
+	.wechat-login-logo-container {
+		background-color: #ededed;
+		border-radius: 50%;
+		height: 80rpx;
+		line-height: 80rpx;
+		padding: 0 ;
+		text-align: center;
+		width: 80rpx;
+	}
+
+
+
+	.obtain-user-avatar {
+		height: 80rpx;
+		width: 80rpx;
+	}
+
+	.popup-item-content {
+		align-items: center;
+		display: flex;
+		height: 70rpx;
+	}
+
+	.popup-item-content :nth-child(1) {
+		margin-right: 20rpx;
+	}
+
+	.title-container {
+		color: #171717;
+		font-size: 26rpx;
+	}
+
+	/* 微信弹出框 容器 高度 */
+	.wechat-popup-content {
+		height: 480rpx;
+		padding: 20rpx;
+
+	}
+
+	/* 用户信息 容器 样式 */
+	.user-profile-container {
+		border-bottom: 1px solid #e5e5e5;
+		border-top: 1px solid #e5e5e5;
+		height: 120rpx;
+	}
+
+	/* 用户头像 */
+	.user-avatar-container {
+		height: 80rpx;
+		width: 80rpx;
+	}
+
+	/* 授权区 */
+	.authorize-container {
+		height: 140rpx;
+	}
+
+	.authorize-container :nth-child(1) {
+		margin: 0 auto;
+	}
+
+	.authorize-container button {
+		background-color: #07c160;
+		color: white;
+		font-size: 24rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+
+		text-align: center;
+		width: 300rpx;
 	}
 </style>

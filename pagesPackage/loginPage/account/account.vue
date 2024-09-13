@@ -54,10 +54,6 @@
 		useAuthStore
 	} from '/pinia'
 
-
-
-
-
 	const authStore = useAuthStore()
 	// 登录表单
 	const loginForm = reactive({
@@ -87,7 +83,7 @@
 					required: true,
 					errorMessage: '请输入密码',
 				},
-				],
+			],
 		}
 	}
 
@@ -96,15 +92,14 @@
 	let tipsText = ref("")
 	let tipsType = ref("success")
 	const submit = () => {
+		tipsText.value = "登陆中......"
+		tipsType.value = "info"
 		form.value.validate().then(async (res) => {
-			tipsText.value = "登陆中......"
-			tipsType.value = "info"
 			const isLoading = await authStore.setAuthProfile(res)
 			if (isLoading) {
-			
-				uni.switchTab({
-					url: "/pages/home/index"
-				})
+				// uni.switchTab({
+				// 	url: "/pages/home/index"
+				// })
 			} else {
 				tips.value.close()
 				tipsText.value = "登陆失败"

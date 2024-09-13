@@ -22,14 +22,14 @@ const _sfc_main = {
   setup(__props) {
     const auth = pinia_modules_auth.useAuthStore();
     let list = common_vendor.ref([]);
-    common_vendor.computed(() => auth.userId);
+    let userId = common_vendor.computed(() => auth.userId);
     common_vendor.onMounted(() => {
       common_vendor.nextTick$1();
       taksList();
     });
     const taksList = async () => {
       let respData = await api_home_index.getTaskList({
-        userId: "528978096703930750"
+        userId: userId.value ?? "528978096703930768"
       });
       list.value = respData.data;
     };

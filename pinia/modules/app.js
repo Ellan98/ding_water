@@ -3,6 +3,7 @@ import { defineStore } from "pinia"
 const useAppStore = defineStore("app",{
 	state: () => ({
 		tipsStatus:false,
+		protectUrl:["/auth/login",],//不经过拦截的 url
 		
 		}),
 	getters:{
@@ -12,3 +13,6 @@ const useAppStore = defineStore("app",{
 		
 	}
 })
+
+
+export default useAppStore;

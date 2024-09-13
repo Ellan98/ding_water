@@ -1,6 +1,7 @@
 "use strict";
 const common_vendor = require("../../../../common/vendor.js");
 const common_assets = require("../../../../common/assets.js");
+require("../../../../utils/request.js");
 const utils_date = require("../../../../utils/date.js");
 require("../../../../pinia/index.js");
 const pinia_modules_chat = require("../../../../pinia/modules/chat.js");

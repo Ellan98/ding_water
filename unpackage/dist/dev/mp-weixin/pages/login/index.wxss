@@ -61,6 +61,67 @@
 .user-nick-name.data-v-d08ef7d4 {
 		margin: 0 10rpx;
 }
-.list-item-container.data-v-d08ef7d4 {
-		border: 1px solid red;
+
+	/* 微信获取用户信息 样式 */
+.wechat-login-logo-container.data-v-d08ef7d4 {
+		background-color: #ededed;
+		border-radius: 50%;
+		height: 80rpx;
+		line-height: 80rpx;
+		padding: 0 ;
+		text-align: center;
+		width: 80rpx;
+}
+.obtain-user-avatar.data-v-d08ef7d4 {
+		height: 80rpx;
+		width: 80rpx;
+}
+.popup-item-content.data-v-d08ef7d4 {
+		align-items: center;
+		display: flex;
+		height: 70rpx;
+}
+.popup-item-content.data-v-d08ef7d4 :nth-child(1) {
+		margin-right: 20rpx;
+}
+.title-container.data-v-d08ef7d4 {
+		color: #171717;
+		font-size: 26rpx;
+}
+
+	/* 微信弹出框 容器 高度 */
+.wechat-popup-content.data-v-d08ef7d4 {
+		height: 480rpx;
+		padding: 20rpx;
+}
+
+	/* 用户信息 容器 样式 */
+.user-profile-container.data-v-d08ef7d4 {
+		border-bottom: 1px solid #e5e5e5;
+		border-top: 1px solid #e5e5e5;
+		height: 120rpx;
+}
+
+	/* 用户头像 */
+.user-avatar-container.data-v-d08ef7d4 {
+		height: 80rpx;
+		width: 80rpx;
+}
+
+	/* 授权区 */
+.authorize-container.data-v-d08ef7d4 {
+		height: 140rpx;
+}
+.authorize-container.data-v-d08ef7d4 :nth-child(1) {
+		margin: 0 auto;
+}
+.authorize-container button.data-v-d08ef7d4 {
+		background-color: #07c160;
+		color: white;
+		font-size: 24rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+
+		text-align: center;
+		width: 300rpx;
 }

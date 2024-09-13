@@ -15,7 +15,8 @@
 		reactive,
 		ref,
 		onMounted,
-		nextTick,computed,
+		nextTick,
+		computed,
 	} from "vue"
 	import {
 		useAuthStore
@@ -48,10 +49,10 @@
 		// 请求任务列表
 		taksList()
 	})
-		
-	const taksList  = async () =>  {
+
+	const taksList = async () => {
 		let respData = await getTaskList({
-			userId: "528978096703930750"
+			userId: userId.value ?? "528978096703930768"
 		})
 		list.value = respData.data
 	}
